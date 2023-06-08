@@ -10,6 +10,9 @@
 /[Ll]ogs/
 /[Mm]emoryCaptures/
 
+# Ignore entire RawAssets folder within Assets
+/[Aa]ssets/RawAssets/
+
 # Never ignore Asset meta data
 !/[Aa]ssets/**/*.meta
 

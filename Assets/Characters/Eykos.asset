@@ -12,17 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2257a619ee7de0746af37d18c90da5b0, type: 3}
   m_Name: Eykos
   m_EditorClassIdentifier: 
-  strength: 0
-  defence: 0
-  intelligence: 0
-  charisma: 0
-  agility: 0
-  endurance: 0
-  accuracy: 0
-  resilience: 0
-  leadership: 0
-  luck: 0
-  maxStat: 0
-  minStat: 0
-  slaveName: 
-  slaveinfo: 
+  slaveName: Eykos
+  slaveinfo: Slave purchased for 11 gold
+  slavePrice: 900
+  strength: 3
+  defence: 2
+  intelligence: 7
+  charisma: 4
+  agility: 6
+  endurance: 2
+  accuracy: 4
+  resilience: 2
+  leadership: 9
+  luck: 7
+  maxStat: 30
+  minStat: 2

@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SelectSlaveMenu : MonoBehaviour
@@ -9,6 +11,7 @@ public class SelectSlaveMenu : MonoBehaviour
     [SerializeField] GameObject[] slaveSelectionMenuUI;
     [SerializeField] GameObject mySlaves;
     [SerializeField] TextMeshProUGUI[] mySlaveText;
+    [SerializeField] GameObject nextSlaves, previousSlaves;
     int activeMenu = 0;
     string slaveText = "";
 
@@ -83,30 +86,28 @@ public class SelectSlaveMenu : MonoBehaviour
 
         int number = 0;
 
+        if (slaves.Length > 3)
+        {
+            nextSlaves.gameObject.SetActive(true);
+            previousSlaves.gameObject.SetActive(true);
+        }
+        else
+        {
+            nextSlaves.gameObject.SetActive(false);
+            previousSlaves.gameObject.SetActive(false);
+        }
+       Array.Reverse(slaves);
         foreach (var item in mySlaveText)
         {
-            item.text = slaves[number].character.name;
-            number++;
+          if(number >= slaves.Length) { break; }
+               
+                item.text = slaves[number].character.name;
+                number++;
+            
+           
         }
+        Array.Reverse(slaves);
 
-
-        /*
-         *    mySlaveText[0].text = slaves[0].character.name;
-        mySlaveText[1].text = slaves[1].character.name;
-        mySlaveText[2].text = slaves[2].character.name;
-                foreach (var slave in slaves)
-                {
-                    slaveText += $"slave name is: {slave.character.name}, " ;
-                    print(slave.character);
-                }
-                if (!string.IsNullOrEmpty(slaveText))
-                {
-                    slaveText = slaveText.Remove(slaveText.Length - 2);
-                    slaveText += ".";
-                }
-               mySlavesText.text = slaveText;
-
-             */
 
     }
     public void DisableMySlavesMenu()

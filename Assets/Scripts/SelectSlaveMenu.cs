@@ -2,15 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 public class SelectSlaveMenu : MonoBehaviour
 {
     [SerializeField] GameObject[] slaveSelection;
     [SerializeField] GameObject[] slaveSelectionMenuUI;
     [SerializeField] GameObject mySlaves;
-    [SerializeField] TextMeshProUGUI[] mySlaveText;
+    [SerializeField] TextMeshProUGUI[] mySlaveText, mySlaveTextInfo;
     [SerializeField] GameObject nextSlaves, previousSlaves;
     int activeMenu = 0;
     string slaveText = "";
@@ -86,6 +86,7 @@ public class SelectSlaveMenu : MonoBehaviour
         Slave[] slaves = FindObjectsOfType<Slave>();
 
         int number = 0;
+        int numberInfo = 0;
 
         if (slaves.Length > 3)
         {
@@ -106,6 +107,17 @@ public class SelectSlaveMenu : MonoBehaviour
                 number++;
             
            
+        }
+
+        foreach (var item in mySlaveTextInfo)
+        {
+            if (numberInfo >= slaves.Length) { break; }
+            //  item.text = $"change this to info string + {slaves[numberInfo].character.name}";
+            item.text =    $"This slaves stats are Strength: {slaves[numberInfo].character.strength}, Defence: {slaves[numberInfo].character.defence}, Intelligence: {slaves[numberInfo].character.intelligence}," +
+            $"Charisma: {slaves[numberInfo].character.charisma}, Agility: {slaves[numberInfo].character.agility}, Endurance: {slaves[numberInfo].character.endurance}, Accuracy: {slaves[numberInfo].character.accuracy}," +
+            $"Resilience: {slaves[numberInfo].character.resilience}, Leadership: {slaves[numberInfo].character.leadership}, Luck: {slaves[numberInfo].character.luck} " +
+            $"There Max stat is {slaves[numberInfo].character.maxStat}, and minimum stat is {slaves[numberInfo].character.minStat}";
+            numberInfo++;
         }
         Array.Reverse(slaves);
 
@@ -129,6 +141,7 @@ public class SelectSlaveMenu : MonoBehaviour
 
     public void NextSlavePage()
     {
+
         firstNumber += 3;
         secondNumber += 3;
         thirdNumber += 3;

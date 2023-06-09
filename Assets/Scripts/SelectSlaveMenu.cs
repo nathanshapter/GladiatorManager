@@ -74,6 +74,11 @@ public class SelectSlaveMenu : MonoBehaviour
             slaveText += $"slave name is: {slave.character.name}, " ;
             print(slave.character);
         }
+        if (!string.IsNullOrEmpty(slaveText))
+        {
+            slaveText = slaveText.Remove(slaveText.Length - 2);
+            slaveText += ".";
+        }
        mySlavesText.text = slaveText;
 
      

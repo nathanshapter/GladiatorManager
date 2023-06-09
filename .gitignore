@@ -10,7 +10,8 @@
 /[Ll]ogs/
 /[Mm]emoryCaptures/
 
-# Ignore entire RawAssets folder within Assets
+# Ignore entire RawAssets folder within Assets and therabytes
+/[Aa]ssets/TheraBytes/
 /[Aa]ssets/RawAssets/
 
 # Never ignore Asset meta data

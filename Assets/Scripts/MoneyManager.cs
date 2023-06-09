@@ -1,18 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MoneyManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] TextMeshProUGUI moneyText;
+    public int money;
+    private void Start()
     {
-        
+        // if new game{}
+        money = 1000;
+        moneyText.text = $"Wallet contains {money} gold";
     }
 
-    // Update is called once per frame
-    void Update()
+
+
+
+    public void UpdateText()
     {
-        
+        moneyText.text = $"Wallet contains {money} gold";
     }
 }

@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Slave : MonoBehaviour
 {
-    public Character c;
-
+    public Character character;
+    SlaveManager sm;
     private void Start()
     {
-
-   //    print(c.name + "is my slave name"); 
+        sm = GetComponentInParent<SlaveManager>();
+        character = sm.chosenCharacter;
     }
 }

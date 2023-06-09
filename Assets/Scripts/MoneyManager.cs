@@ -8,10 +8,11 @@ public class MoneyManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI moneyText;
     public int money;
+    public int startingMoney;
     private void Start()
     {
         // if new game{}
-        money = 1000;
+        money = startingMoney;
         moneyText.text = $"Wallet contains {money} gold";
     }
 

@@ -14,6 +14,7 @@ public class SelectSlaveMenu : MonoBehaviour
     [SerializeField] GameObject nextSlaves, previousSlaves;
     int activeMenu = 0;
     string slaveText = "";
+    int firstNumber =0 , secondNumber =1, thirdNumber =2;
 
     private void Start()
     {
@@ -108,7 +109,17 @@ public class SelectSlaveMenu : MonoBehaviour
         }
         Array.Reverse(slaves);
 
-
+        SlaveTextOn(firstNumber, secondNumber, thirdNumber);
+    }
+    void SlaveTextOn(int one, int two, int three)
+    {
+        foreach (var item in mySlaveText)
+        {
+            item.gameObject.SetActive(false);
+        }
+        mySlaveText[one].gameObject.SetActive(true);
+        mySlaveText[two].gameObject.SetActive(true);
+        mySlaveText[three].gameObject.SetActive(true);
     }
     public void DisableMySlavesMenu()
     {
@@ -116,5 +127,18 @@ public class SelectSlaveMenu : MonoBehaviour
         EnableSlave(activeMenu);
     }
 
-
+    public void NextSlavePage()
+    {
+        firstNumber += 3;
+        secondNumber += 3;
+        thirdNumber += 3;
+        SlaveTextOn(firstNumber, secondNumber, thirdNumber);
+    }
+    public void PreviousSlavePage() 
+    {
+        firstNumber -= 3;
+        secondNumber -= 3;
+        thirdNumber -= 3;
+        SlaveTextOn(firstNumber, secondNumber, thirdNumber);
+    }
 }

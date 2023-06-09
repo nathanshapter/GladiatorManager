@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class Slave : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Character c;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+
+   //    print(c.name + "is my slave name"); 
     }
 }

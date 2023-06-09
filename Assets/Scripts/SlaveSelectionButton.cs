@@ -9,10 +9,13 @@ public class SlaveSelectionButton : MonoBehaviour
     [SerializeField] TextMeshProUGUI buttonText, infoText;
 
     public Character character;
+    public Character currentCharacter;
     MoneyManager money;
+    SlaveManager sm;
 
     private void Start()
     {
+        sm = FindObjectOfType<SlaveManager>();
         money = FindObjectOfType<MoneyManager>();
         buttonText.text = character.slaveName + $" The price is {character.slavePrice}";
         infoText.text = $"This slaves stats are Strength: {character.strength}, Defence: {character.defence}, Intelligence: {character.intelligence}," +
@@ -25,9 +28,14 @@ public class SlaveSelectionButton : MonoBehaviour
     {
         if(money.money >= character.slavePrice)
         {
+            sm.chosenCharacter = character;
             money.money -= character.slavePrice;
             print(money.money);
             money.UpdateText();
+            print($"You have purchased {character.slaveName} for {money.money}");
+            // add this slave to your slavemanager
+            sm.newSlave(character);
+            
         }
         else
         {

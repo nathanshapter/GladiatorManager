@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SlaveManager : MonoBehaviour
 {
-    List<Slave> slaves = new List<Slave>();
+   public List<Slave> slaves = new List<Slave>();
 
 
     public Character chosenCharacter;

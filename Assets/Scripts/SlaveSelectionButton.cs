@@ -23,25 +23,30 @@ public class SlaveSelectionButton : MonoBehaviour
             $"Resilience: {character.resilience}, Leadership: {character.leadership}, Luck: {character.luck} " +
             $"There Max stat is {character.maxStat}, and minimum stat is {character.minStat}";
     }
-
+    bool purchased;
     public void BuySlave()
     {
-        if(money.money >= character.slavePrice)
+        if(money.money >= character.slavePrice && !purchased)
         {
             sm.chosenCharacter = character;
             money.money -= character.slavePrice;
-            print(money.money);
+            
             money.UpdateText();
-            print($"You have purchased {character.slaveName} for {money.money}");
+            print($"You have purchased {character.slaveName} for {character.slavePrice}");
             // add this slave to your slavemanager
             sm.newSlave(character);
-            
+            purchased = true;
+            buttonText.text = "You own this slave";
+        }
+        else if(money.money >= character.slavePrice)
+        {
+            print("You have already purchased this character");
         }
         else
         {
-            print("not enough money");
+            print("You do not have enough money");
         }
         // open next menu for battle management
     }
-
+    
 }

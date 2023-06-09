@@ -1,22 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class SelectSlaveMenu : MonoBehaviour
 {
     [SerializeField] GameObject[] slaveSelection;
+    [SerializeField] GameObject mySlaves;
+    [SerializeField] TextMeshProUGUI mySlavesText;
     int activeMenu = 0;
+    string slaveText = "";
 
     private void Start()
     {
-        DisableAll();
+        DisableAllSlaveSelection();
         EnableSlave(activeMenu);
-        
+        mySlaves.gameObject.SetActive(false);
     }
 
     public void PreviousSlave()
     {
-        DisableAll();
+        DisableAllSlaveSelection();
         if(activeMenu ==0)
         {
             activeMenu = slaveSelection.Length -1;
@@ -30,7 +34,7 @@ public class SelectSlaveMenu : MonoBehaviour
     }
     public void NextSlave()
     {
-        DisableAll();
+        DisableAllSlaveSelection();
         if (activeMenu == slaveSelection.Length - 1)
         {
             activeMenu = 0;
@@ -43,18 +47,37 @@ public class SelectSlaveMenu : MonoBehaviour
         EnableSlave(activeMenu);
     }
 
-    private void DisableAll()
+    private void DisableAllSlaveSelection()
     {
         foreach (var item in slaveSelection)
         {
             item.gameObject.SetActive(false);
         }
+        slaveText= null;
     }
     private void EnableSlave(int i)
     {
        
         slaveSelection[i].gameObject.SetActive(true);
-        print(activeMenu);
+       
+    }
+    public void MySlavesMenu()
+    {
+        DisableAllSlaveSelection();
+        mySlaves.gameObject.SetActive(true);
+        Slave[] slaves = FindObjectsOfType<Slave>();
+
+       
+
+        foreach (var slave in slaves)
+        {
+            slaveText += $"slave name is: {slave.character.name}, " ;
+            print(slave.character);
+        }
+       mySlavesText.text = slaveText;
+
+     
+       
     }
 
 }

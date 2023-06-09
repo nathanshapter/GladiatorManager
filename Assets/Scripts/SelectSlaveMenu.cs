@@ -6,8 +6,9 @@ using UnityEngine;
 public class SelectSlaveMenu : MonoBehaviour
 {
     [SerializeField] GameObject[] slaveSelection;
+    [SerializeField] GameObject[] slaveSelectionMenuUI;
     [SerializeField] GameObject mySlaves;
-    [SerializeField] TextMeshProUGUI mySlavesText;
+    [SerializeField] TextMeshProUGUI[] mySlaveText;
     int activeMenu = 0;
     string slaveText = "";
 
@@ -16,6 +17,7 @@ public class SelectSlaveMenu : MonoBehaviour
         DisableAllSlaveSelection();
         EnableSlave(activeMenu);
         mySlaves.gameObject.SetActive(false);
+        
     }
 
     public void PreviousSlave()
@@ -55,34 +57,63 @@ public class SelectSlaveMenu : MonoBehaviour
         }
         slaveText= null;
     }
+    private void DisableAllUISlaveMenu()
+    {
+        DisableAllSlaveSelection();
+        foreach (var item in slaveSelectionMenuUI)
+        {
+            item.gameObject.SetActive(false);
+        }
+    }
     private void EnableSlave(int i)
     {
        
         slaveSelection[i].gameObject.SetActive(true);
-       
+        foreach (var item in slaveSelectionMenuUI)
+        {
+            item.gameObject.SetActive(true);
+        }
     }
     public void MySlavesMenu()
     {
-        DisableAllSlaveSelection();
+        DisableAllUISlaveMenu();
+
         mySlaves.gameObject.SetActive(true);
         Slave[] slaves = FindObjectsOfType<Slave>();
 
-       
+        int number = 0;
 
-        foreach (var slave in slaves)
+        foreach (var item in mySlaveText)
         {
-            slaveText += $"slave name is: {slave.character.name}, " ;
-            print(slave.character);
+            item.text = slaves[number].character.name;
+            number++;
         }
-        if (!string.IsNullOrEmpty(slaveText))
-        {
-            slaveText = slaveText.Remove(slaveText.Length - 2);
-            slaveText += ".";
-        }
-       mySlavesText.text = slaveText;
 
-     
-       
+
+        /*
+         *    mySlaveText[0].text = slaves[0].character.name;
+        mySlaveText[1].text = slaves[1].character.name;
+        mySlaveText[2].text = slaves[2].character.name;
+                foreach (var slave in slaves)
+                {
+                    slaveText += $"slave name is: {slave.character.name}, " ;
+                    print(slave.character);
+                }
+                if (!string.IsNullOrEmpty(slaveText))
+                {
+                    slaveText = slaveText.Remove(slaveText.Length - 2);
+                    slaveText += ".";
+                }
+               mySlavesText.text = slaveText;
+
+             */
+
     }
+    public void DisableMySlavesMenu()
+    {
+        mySlaves.gameObject.SetActive(false);
+        EnableSlave(activeMenu);
+    }
+
 
 }

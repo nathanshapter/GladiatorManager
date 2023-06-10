@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using TMPro;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
@@ -84,57 +85,77 @@ public class SelectSlaveMenu : MonoBehaviour
     {
         slaves = FindObjectsOfType<Slave>();
     }
-    public void MySlavesMenu()
+    public void MySlavesMenu(bool yes) // the bool is set to false when you just want to update the text, else a full reload is marked for true
     {
-        DisableAllUISlaveMenu();
-
-        mySlaves.gameObject.SetActive(true);
-        FindSlaves();
-       
         int number = 0;
         int numberInfo = 0;
-
-        if (slaves.Length > 3)
+        if (yes)
         {
-            nextSlaves.gameObject.SetActive(true);
-            previousSlaves.gameObject.SetActive(true);
+            DisableAllUISlaveMenu();
+
+            mySlaves.gameObject.SetActive(true);
+            FindSlaves();
+
+           
+
+            if (slaves.Length > 3)
+            {
+                nextSlaves.gameObject.SetActive(true);
+                previousSlaves.gameObject.SetActive(true);
+            }
+            else
+            {
+                nextSlaves.gameObject.SetActive(false);
+                previousSlaves.gameObject.SetActive(false);
+            }
+            Array.Reverse(slaves);
+
+            foreach (var item in upgradeButton)
+            {
+                item.GetSlave();
+            }
+
+
+            foreach (var item in mySlaveText)
+            {
+                if (number >= slaves.Length) { break; }
+
+                item.text = slaves[number].character.name;
+                number++;
+
+
+            }
+
+            foreach (var item in mySlaveTextInfo)
+            {
+                if (numberInfo >= slaves.Length) { break; }
+                //  item.text = $"change this to info string + {slaves[numberInfo].character.name}";
+                item.text = $"This slaves stats are Strength: {slaves[numberInfo].character.strength},\nDefence: {slaves[numberInfo].character.defence},\nIntelligence: {slaves[numberInfo].character.intelligence},\n" +
+                $"Charisma: {slaves[numberInfo].character.charisma},\nAgility: {slaves[numberInfo].character.agility},\nEndurance: {slaves[numberInfo].character.endurance},\nAccuracy: {slaves[numberInfo].character.accuracy},\n" +
+                $"Resilience: {slaves[numberInfo].character.resilience},\nLeadership: {slaves[numberInfo].character.leadership},\nLuck: {slaves[numberInfo].character.luck},\n" +
+                $"There Max stat is {slaves[numberInfo].character.maxStat},\nand minimum stat is {slaves[numberInfo].character.minStat}";
+                numberInfo++;
+            }
+            Array.Reverse(slaves);
+
+            SlaveTextOn(firstNumber, secondNumber, thirdNumber);
         }
         else
         {
-            nextSlaves.gameObject.SetActive(false);
-            previousSlaves.gameObject.SetActive(false);
+            Array.Reverse(slaves);
+            foreach (var item in mySlaveTextInfo)
+            {
+                if (numberInfo >= slaves.Length) { break; }
+                //  item.text = $"change this to info string + {slaves[numberInfo].character.name}";
+                item.text = $"This slaves stats are Strength: {slaves[numberInfo].character.strength},\nDefence: {slaves[numberInfo].character.defence},\nIntelligence: {slaves[numberInfo].character.intelligence},\n" +
+                $"Charisma: {slaves[numberInfo].character.charisma},\nAgility: {slaves[numberInfo].character.agility},\nEndurance: {slaves[numberInfo].character.endurance},\nAccuracy: {slaves[numberInfo].character.accuracy},\n" +
+                $"Resilience: {slaves[numberInfo].character.resilience},\nLeadership: {slaves[numberInfo].character.leadership},\nLuck: {slaves[numberInfo].character.luck},\n" +
+                $"There Max stat is {slaves[numberInfo].character.maxStat},\nand minimum stat is {slaves[numberInfo].character.minStat}";
+                numberInfo++;
+            }
+            Array.Reverse(slaves);
         }
-       Array.Reverse(slaves);
-
-        foreach (var item in upgradeButton)
-        {
-            item.GetSlave();
-        }
-
-        
-        foreach (var item in mySlaveText)
-        {
-          if(number >= slaves.Length) { break; }
-               
-                item.text = slaves[number].character.name;
-                number++;
-            
-           
-        }
-
-        foreach (var item in mySlaveTextInfo)
-        {
-            if (numberInfo >= slaves.Length) { break; }
-            //  item.text = $"change this to info string + {slaves[numberInfo].character.name}";
-            item.text =    $"This slaves stats are Strength: {slaves[numberInfo].character.strength},\nDefence: {slaves[numberInfo].character.defence},\nIntelligence: {slaves[numberInfo].character.intelligence},\n" +
-            $"Charisma: {slaves[numberInfo].character.charisma},\nAgility: {slaves[numberInfo].character.agility},\nEndurance: {slaves[numberInfo].character.endurance},\nAccuracy: {slaves[numberInfo].character.accuracy},\n" +
-            $"Resilience: {slaves[numberInfo].character.resilience},\nLeadership: {slaves[numberInfo].character.leadership},\nLuck: {slaves[numberInfo].character.luck},\n" +
-            $"There Max stat is {slaves[numberInfo].character.maxStat},\nand minimum stat is {slaves[numberInfo].character.minStat}";
-            numberInfo++;
-        }
-        Array.Reverse(slaves);
-
-        SlaveTextOn(firstNumber, secondNumber, thirdNumber);
+       
     }
     void SlaveTextOn(int one, int two, int three)
     {

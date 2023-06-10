@@ -22,6 +22,8 @@ public class UpgradeButton : MonoBehaviour
         buttonText= GetComponentInChildren<TextMeshProUGUI>();
         moneyManager = FindObjectOfType<MoneyManager>();
         UpdateButtonText(numberToPass);
+
+       
     }
 
   public  void GetSlave()
@@ -46,52 +48,61 @@ public class UpgradeButton : MonoBehaviour
           {
               case 1: //strength
                   slave.character.strength += 1;
-                  print(slave.character.name + " upgraded strength to " + slave.character.strength);              
-
+                  print(slave.character.name + " upgraded strength to " + slave.character.strength);
+                slaveMenu.MySlavesMenu(false);
                 break;
               case 2: // defence
                 slave.character.defence += 1;
                   print(slave.character.name + " upgraded defence to " + slave.character.defence);
-                  break;
+                slaveMenu.MySlavesMenu(false);
+                break;
             case 3: // ;intelligence
 
                 slave.character.intelligence += 1;
                 print(slave.character.name + " upgraded intelligence to " + slave.character.intelligence);
+                slaveMenu.MySlavesMenu(false);
                 break;
             case 4: // charisma
 
                 slave.character.charisma += 1;
                 print(slave.character.name + " upgraded charisma to " + slave.character.charisma);
+                slaveMenu.MySlavesMenu(false);
                 break;
             case 5: // agility
 
                 slave.character.agility += 1;
                 print(slave.character.name + " upgraded agility to " + slave.character.agility);
+                slaveMenu.MySlavesMenu(false);
                 break;
             case 6: // endurance
 
                 slave.character.endurance += 1;
                 print(slave.character.name + " upgraded endurance to " + slave.character.endurance);
+                slaveMenu.MySlavesMenu(false);
                 break;
             case 7: // accuracy
 
                 slave.character.accuracy += 1;
                 print(slave.character.name + " upgraded accuracy to " + slave.character.accuracy);
+                slaveMenu.MySlavesMenu(false);
                 break;
             case 8: // resilience
 
                 slave.character.resilience += 1;
                 print(slave.character.name + " upgraded resilience to " + slave.character.resilience);
+                slaveMenu.MySlavesMenu(false);
                 break; 
             case 9: // leadership
 
                 slave.character.leadership += 1;
                 print(slave.character.name + " upgraded leadership to " + slave.character.leadership);
+                slaveMenu.MySlavesMenu(false);
                 break;
             case 10: // luck
 
                 slave.character.luck += 1;
                 print(slave.character.name + " upgraded luck to " + slave.character.luck);
+                slaveMenu.MySlavesMenu(false);
                 break;
             default:
                   print("Invalid attribute ID.");

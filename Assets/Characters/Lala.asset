@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2257a619ee7de0746af37d18c90da5b0, type: 3}
   m_Name: Lala
   m_EditorClassIdentifier: 
-  slaveName: 
+  slaveName: Lala
   slaveinfo: 
-  slavePrice: 0
-  strength: 0
-  defence: 0
-  intelligence: 0
-  charisma: 0
-  agility: 0
-  endurance: 0
-  accuracy: 0
-  resilience: 0
-  leadership: 0
-  luck: 0
-  maxStat: 0
-  minStat: 0
+  slavePrice: 15624
+  strength: 4
+  defence: 5
+  intelligence: 4
+  charisma: 6
+  agility: 4
+  endurance: 56
+  accuracy: 4
+  resilience: 4
+  leadership: 4
+  luck: 6
+  maxStat: 78
+  minStat: 1

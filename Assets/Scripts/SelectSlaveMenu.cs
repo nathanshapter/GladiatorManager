@@ -12,6 +12,7 @@ public class SelectSlaveMenu : MonoBehaviour
     [SerializeField] GameObject mySlaves;
     [SerializeField] TextMeshProUGUI[] mySlaveText, mySlaveTextInfo;
     [SerializeField] GameObject nextSlaves, previousSlaves;
+    [SerializeField] UpgradeButton[] upgradeButton;
     int activeMenu = 0;
     string slaveText = "";
     int firstNumber =0 , secondNumber =1, thirdNumber =2;
@@ -21,7 +22,7 @@ public class SelectSlaveMenu : MonoBehaviour
         DisableAllSlaveSelection();
         EnableSlave(activeMenu);
         mySlaves.gameObject.SetActive(false);
-        
+      
     }
 
     public void PreviousSlave()
@@ -78,13 +79,18 @@ public class SelectSlaveMenu : MonoBehaviour
             item.gameObject.SetActive(true);
         }
     }
+  public  Slave[] slaves;
+    void FindSlaves()
+    {
+        slaves = FindObjectsOfType<Slave>();
+    }
     public void MySlavesMenu()
     {
         DisableAllUISlaveMenu();
 
         mySlaves.gameObject.SetActive(true);
-        Slave[] slaves = FindObjectsOfType<Slave>();
-
+        FindSlaves();
+       
         int number = 0;
         int numberInfo = 0;
 
@@ -99,6 +105,13 @@ public class SelectSlaveMenu : MonoBehaviour
             previousSlaves.gameObject.SetActive(false);
         }
        Array.Reverse(slaves);
+
+        foreach (var item in upgradeButton)
+        {
+            item.GetSlave();
+        }
+
+        
         foreach (var item in mySlaveText)
         {
           if(number >= slaves.Length) { break; }

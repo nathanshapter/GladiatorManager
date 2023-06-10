@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2257a619ee7de0746af37d18c90da5b0, type: 3}
   m_Name: Haren
   m_EditorClassIdentifier: 
-  slaveName: 
+  slaveName: Haren
   slaveinfo: 
-  slavePrice: 0
+  slavePrice: 500
   strength: 0
-  defence: 0
-  intelligence: 0
-  charisma: 0
-  agility: 0
-  endurance: 0
-  accuracy: 0
-  resilience: 0
-  leadership: 0
+  defence: 51
+  intelligence: 3
+  charisma: 2
+  agility: 4
+  endurance: 5
+  accuracy: 3
+  resilience: 5
+  leadership: 3
   luck: 0
-  maxStat: 0
-  minStat: 0
+  maxStat: 55
+  minStat: 5

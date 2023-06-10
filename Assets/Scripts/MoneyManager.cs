@@ -9,6 +9,8 @@ public class MoneyManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI moneyText;
     public int money;
     public int startingMoney;
+
+    public int upgradePrice = 20;
     private void Start()
     {
         // if new game{}

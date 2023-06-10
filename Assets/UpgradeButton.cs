@@ -30,7 +30,7 @@ public class UpgradeButton : MonoBehaviour
     }
 
 
-     public void UpgradeSlaveAttribute(int attributeName)
+     public void UpgradeSlaveAttribute(int attributeName) // if this is not working check to make sure the button is in the select slave menu
       {
         switch(attributeName)
           {

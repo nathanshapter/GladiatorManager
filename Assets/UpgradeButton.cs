@@ -108,6 +108,9 @@ public class UpgradeButton : MonoBehaviour
                   print("Invalid attribute ID.");
                   break;
           }
+
+       // save the date here, and turn of all of the buttons, only when the date does not equal can we turn all of the buttons back on
+
       }
 
     public void UpdateButtonText(int attributeName)

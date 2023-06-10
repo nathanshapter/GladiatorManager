@@ -14,20 +14,16 @@ public class DateManager : MonoBehaviour
     private void Start()
     {
         // Initial date
-       currentDate = new DateTime(52, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+       currentDate = new DateTime(51, 1, 1, 0, 0, 0, DateTimeKind.Utc);
         Debug.Log(FormatDate(currentDate));
 
      
     }
 
 
-
    
 
- public  void IncreaseDate()
-    {
-        currentDate = IncreaseDateOneWeek(currentDate);
-    }
+
 
     private DateTime IncreaseDateOneWeek(DateTime date)
     {
@@ -41,7 +37,7 @@ public class DateManager : MonoBehaviour
 
     private string FormatDate(DateTime date)
     {
-        print("The date is");
-        return date.ToString("d MMMM yyyy") + " BCE";
+        string era = date.Year < 1 ? "BCE" : "CE";
+        return date.ToString("d MMMM yyyy ") + era;
     }
 }

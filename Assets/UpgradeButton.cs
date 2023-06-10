@@ -39,6 +39,8 @@ public class UpgradeButton : MonoBehaviour
 
 
      public void UpgradeSlaveAttribute(int attributeName) // if this is not working check to make sure the button is in the select slave menu
+                                                            // implement method that puts them unavailable to fight for this week, and only one/two things can be upgraded at a time
+
       {
         switch(attributeName)
           {

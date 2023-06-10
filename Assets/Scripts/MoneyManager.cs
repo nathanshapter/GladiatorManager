@@ -10,7 +10,7 @@ public class MoneyManager : MonoBehaviour
     public int money;
     public int startingMoney;
 
-    public int upgradePrice = 20;
+    public int upgradePrice = 20; // implement method to calculate price
     private void Start()
     {
         // if new game{}

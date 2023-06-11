@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
+
 [CreateAssetMenu(fileName = "REPLACENAME")]
 public class Character : ScriptableObject
 {
@@ -11,6 +13,7 @@ public class Character : ScriptableObject
     public int maxStat;
     public int minStat;
 
-   
 
+    public GameObject slavePrefab;
+ 
 }

@@ -17,7 +17,7 @@ public class SelectSlaveMenu : MonoBehaviour
     int activeMenu = 0;
     string slaveText = "";
     int firstNumber =0 , secondNumber =1, thirdNumber =2;
-
+    public Slave[] slaves;
     private void Start()
     {
         DisableAllSlaveSelection();
@@ -80,7 +80,7 @@ public class SelectSlaveMenu : MonoBehaviour
             item.gameObject.SetActive(true);
         }
     }
-  public  Slave[] slaves;
+
     void FindSlaves()
     {
         slaves = FindObjectsOfType<Slave>();
@@ -91,10 +91,13 @@ public class SelectSlaveMenu : MonoBehaviour
         int numberInfo = 0;
         if (yes)
         {
+            FindSlaves();
             DisableAllUISlaveMenu();
 
+
+
             mySlaves.gameObject.SetActive(true);
-            FindSlaves();
+           
 
            
 
@@ -112,6 +115,7 @@ public class SelectSlaveMenu : MonoBehaviour
 
             foreach (var item in upgradeButton)
             {
+               
                 item.GetSlave();
             }
 

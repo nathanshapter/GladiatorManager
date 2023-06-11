@@ -9,7 +9,7 @@ public class UpgradeButton : MonoBehaviour
    [SerializeField] Slave slave;
     Button button;
   [SerializeField]  TextMeshProUGUI buttonText;
-    SelectSlaveMenu slaveMenu;
+  [SerializeField]  SelectSlaveMenu slaveMenu;
     [SerializeField] int slaveNumber = 0;
     MoneyManager moneyManager;
     [SerializeField] int numberToPass =1;
@@ -28,15 +28,20 @@ public class UpgradeButton : MonoBehaviour
 
   public  void GetSlave()
     {
+       
+
         if (slaveNumber >= slaveMenu.slaves.Length)
         {
             this.gameObject.SetActive(false);
             return;
         }
-        else { this.gameObject.SetActive(true);}
+        else { this.gameObject.SetActive(true);
+            slave = slaveMenu.slaves[slaveNumber];
+        }
 
         slave = slaveMenu.slaves[slaveNumber];
-       
+
+
     }
 
 

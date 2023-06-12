@@ -24,6 +24,8 @@ public class SelectSlaveMenu : MonoBehaviour
     string slaveText = "";
     int firstNumber =0 , secondNumber =1, thirdNumber =2;
     public Slave[] slaves;
+
+ [SerializeField]   SlaveBattleMenu slaveBattleMenu;
     private void Start()
     {
         DisableEverything();
@@ -38,7 +40,7 @@ public class SelectSlaveMenu : MonoBehaviour
         slaveAuctionButton.SetActive(true);
         FindSlaves();
        battleMenuUI.SetActive(true);
-        
+        slaveBattleMenu.RollOpponents();
     }
 
     void DisableEverything()

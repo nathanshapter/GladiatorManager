@@ -18,23 +18,27 @@ public class SelectSlaveMenu : MonoBehaviour
     [SerializeField] GameObject battleMenuButton;
     [SerializeField] GameObject slaveAuctionButton;
 
+    [SerializeField] GameObject battleMenuUI; 
+
     int activeMenu = 0;
     string slaveText = "";
     int firstNumber =0 , secondNumber =1, thirdNumber =2;
     public Slave[] slaves;
     private void Start()
     {
-        DisableAllSlaveSelection();
+        DisableEverything();
         EnableSlave(activeMenu);
         mySlaves.gameObject.SetActive(false);
        
-
+        
     }
   public  void EnableBattleMenu()
     {
         DisableEverything();
         slaveAuctionButton.SetActive(true);
-
+        FindSlaves();
+       battleMenuUI.SetActive(true);
+        
     }
 
     void DisableEverything()
@@ -53,6 +57,7 @@ public class SelectSlaveMenu : MonoBehaviour
         {
             item.SetActive(false);
         }
+      battleMenuUI.gameObject.SetActive(false);
       //  battleMenuButton.SetActive(false);
     }
     public void PreviousSlave()
@@ -121,7 +126,7 @@ public class SelectSlaveMenu : MonoBehaviour
         if (yes)
         {
             FindSlaves();
-            DisableAllUISlaveMenu();
+            DisableEverything();
 
 
 
@@ -202,6 +207,7 @@ public class SelectSlaveMenu : MonoBehaviour
     }
     public void DisableMySlavesMenu()
     {
+        DisableEverything();
         mySlaves.gameObject.SetActive(false);
         EnableSlave(activeMenu);
     }
@@ -221,11 +227,5 @@ public class SelectSlaveMenu : MonoBehaviour
         thirdNumber -= 3;
         SlaveTextOn(firstNumber, secondNumber, thirdNumber);
     }
-    void DisableAuctionMenu()
-    {
-        foreach (var item in auctionMenu)
-        {
-            item.SetActive(false);
-        }
-    }
+  
 }

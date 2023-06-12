@@ -14,6 +14,10 @@ public class SelectSlaveMenu : MonoBehaviour
     [SerializeField] TextMeshProUGUI[] mySlaveText, mySlaveTextInfo;
     [SerializeField] GameObject nextSlaves, previousSlaves;
     [SerializeField] UpgradeButton[] upgradeButton;
+    [SerializeField] GameObject[] auctionMenu;
+    [SerializeField] GameObject battleMenuButton;
+    [SerializeField] GameObject slaveAuctionButton;
+
     int activeMenu = 0;
     string slaveText = "";
     int firstNumber =0 , secondNumber =1, thirdNumber =2;
@@ -23,12 +27,37 @@ public class SelectSlaveMenu : MonoBehaviour
         DisableAllSlaveSelection();
         EnableSlave(activeMenu);
         mySlaves.gameObject.SetActive(false);
-      
+       
+
+    }
+  public  void EnableBattleMenu()
+    {
+        DisableEverything();
+        slaveAuctionButton.SetActive(true);
+
     }
 
+    void DisableEverything()
+    {
+        foreach (var item in slaveSelection)
+        {
+           item.gameObject.SetActive(false);
+        }
+        slaveText = null;
+        foreach (var item in slaveSelectionMenuUI)
+        {
+            item.gameObject.SetActive(false);
+        }
+        mySlaves.gameObject.SetActive(false);
+        foreach (var item in auctionMenu)
+        {
+            item.SetActive(false);
+        }
+      //  battleMenuButton.SetActive(false);
+    }
     public void PreviousSlave()
     {
-        DisableAllSlaveSelection();
+        DisableEverything();
         if(activeMenu ==0)
         {
             activeMenu = slaveSelection.Length -1;
@@ -97,7 +126,7 @@ public class SelectSlaveMenu : MonoBehaviour
 
 
             mySlaves.gameObject.SetActive(true);
-           
+            battleMenuButton.gameObject.SetActive(true);
 
            
 
@@ -191,5 +220,12 @@ public class SelectSlaveMenu : MonoBehaviour
         secondNumber -= 3;
         thirdNumber -= 3;
         SlaveTextOn(firstNumber, secondNumber, thirdNumber);
+    }
+    void DisableAuctionMenu()
+    {
+        foreach (var item in auctionMenu)
+        {
+            item.SetActive(false);
+        }
     }
 }

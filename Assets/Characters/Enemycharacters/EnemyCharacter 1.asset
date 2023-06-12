@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21f92f0eb46aeaa4fa66eb256d74d22d, type: 3}
   m_Name: EnemyCharacter 1
   m_EditorClassIdentifier: 
-  slaveName: Albinius
+  slaveName: Flaccus
   slaveinfo: 
-  strength: 4
-  defence: 8
-  intelligence: 0
-  charisma: 0
-  agility: 2
-  endurance: 4
-  accuracy: 4
-  resilience: 3
-  leadership: 1
-  luck: 5
+  strength: 1
+  defence: 9
+  intelligence: 2
+  charisma: 5
+  agility: 0
+  endurance: 8
+  accuracy: 1
+  resilience: 8
+  leadership: 5
+  luck: 6
   maxStat: 0
   minStat: 0
   slavePrefab: {fileID: 0}

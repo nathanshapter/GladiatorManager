@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21f92f0eb46aeaa4fa66eb256d74d22d, type: 3}
+  m_Name: Felix
+  m_EditorClassIdentifier: 
+  slaveName: Felix
+  slaveinfo: 
+  strength: 8
+  defence: 4
+  intelligence: 6
+  charisma: 8
+  agility: 3
+  endurance: 5
+  accuracy: 6
+  resilience: 5
+  leadership: 8
+  luck: 7
+  maxStat: 0
+  minStat: 0
+  slavePrefab: {fileID: 0}

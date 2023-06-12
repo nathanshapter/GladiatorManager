@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 21f92f0eb46aeaa4fa66eb256d74d22d, type: 3}
-  m_Name: happy
+  m_Name: Messala
   m_EditorClassIdentifier: 
-  slaveName: 
+  slaveName: Messala
   slaveinfo: 
-  strength: 9
-  defence: 4
+  strength: 6
+  defence: 2
   intelligence: 2
   charisma: 5
-  agility: 7
-  endurance: 3
-  accuracy: 8
+  agility: 4
+  endurance: 2
+  accuracy: 5
   resilience: 7
-  leadership: 7
-  luck: 9
+  leadership: 4
+  luck: 4
   maxStat: 0
   minStat: 0
   slavePrefab: {fileID: 0}

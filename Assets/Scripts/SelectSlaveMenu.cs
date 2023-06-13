@@ -99,14 +99,7 @@ public class SelectSlaveMenu : MonoBehaviour
         }
         slaveText= null;
     }
-    private void DisableAllUISlaveMenu()
-    {
-        DisableAllSlaveSelection();
-        foreach (var item in slaveSelectionMenuUI)
-        {
-            item.gameObject.SetActive(false);
-        }
-    }
+  
     private void EnableSlave(int i)
     {
        

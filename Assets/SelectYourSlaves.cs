@@ -11,7 +11,7 @@ public class SelectYourSlaves : MonoBehaviour
   [SerializeField]  TMP_Dropdown dropDown;
     SelectSlaveMenu selectSlaveMenu;
     int activeOption;
-
+    BattleSceneSlaves battleSceneSlaves;
 
     List<Slave> slavesTobattleWith = new List<Slave>();
     int slaveMax;
@@ -20,7 +20,7 @@ public class SelectYourSlaves : MonoBehaviour
        
         selectSlaveMenu = FindObjectOfType<SelectSlaveMenu>();
         dropDown = GetComponentInChildren<TMP_Dropdown>();
-      
+      battleSceneSlaves= FindObjectOfType<BattleSceneSlaves>();
        
     }
   public void PopulateDropDown(int i)
@@ -50,6 +50,7 @@ public class SelectYourSlaves : MonoBehaviour
 
         if (slavesTobattleWith.Count == slaveMax)
         {
+            battleSceneSlaves.CopySlaves(slavesTobattleWith);
             SceneManager.LoadScene(1);
             // load scene
             return;

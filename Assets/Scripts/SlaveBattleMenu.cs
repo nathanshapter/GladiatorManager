@@ -20,7 +20,7 @@ public class SlaveBattleMenu : MonoBehaviour
     private void Start()
     {
        
-        // make an oppurtunity for these to be 5v1's, and 1v5's, 1v3's etc
+       
         RollOpponents();
       
 
@@ -29,18 +29,18 @@ public class SlaveBattleMenu : MonoBehaviour
 
     }
 
-    public void RollOpponents()
+    public void RollOpponents() // tmp, tmp, list<enemycharacter>
     {
-        GenerateOpponents(opponentName1, battle1);
-        GenerateOpponents(opponentName2, battle2);
-        GenerateOpponents(opponentName3, battle3);
+        GenerateOpponents(opponentName1, battle1, opponents1, true);
+        GenerateOpponents(opponentName2, battle2,opponents2, false);
+        GenerateOpponents(opponentName3, battle3, opponents3,false);
       
         
     }
 
-    void GenerateOpponents(TMP_Text[] opponentNames, TMP_Text battleText)
+    void GenerateOpponents(TMP_Text[] opponentNames, TMP_Text battleText, List<EnemyCharacter> enemyCharacterList, bool clearList)
     {
-        ClearEnemyList();
+        if (clearList) { ClearEnemyList(); }   
 
         int amountOfEnemiesLimit = selectSlaveMenu.slaves.Length;
         if (amountOfEnemiesLimit == 0)
@@ -62,23 +62,13 @@ public class SlaveBattleMenu : MonoBehaviour
         {
             if (i < amountOfEnemies)
             {
-                CreateNewEnemyCharacter();
+                
                 int numberOfEnemyCharacter = Random.Range(0, allOpponents.Count);
                 opponentNames[i].text = allOpponents[numberOfEnemyCharacter].slaveName;
-                
-                switch (i)
-                {
-                    
-                    case 0:
-                        opponents1.Add(allOpponents[numberOfEnemyCharacter]);
-                        break;
-                    case 1:
-                        opponents2.Add(allOpponents[numberOfEnemyCharacter]);
-                        break;
-                    case 2:
-                        opponents3.Add(allOpponents[numberOfEnemyCharacter]);
-                        break;
-                }
+
+                enemyCharacterList.Add(allOpponents[numberOfEnemyCharacter]);
+               
+               
                 
                 allOpponents.RemoveAt(numberOfEnemyCharacter);
             }
@@ -92,6 +82,10 @@ public class SlaveBattleMenu : MonoBehaviour
             amountOfCharacterSlaves = 1;
         }
         battleText.text = $"{amountOfCharacterSlaves}v{amountOfEnemies}";
+        CreateNewEnemyCharacter();
+
+        if(enemyCharacterList.Count > amountOfEnemies) { enemyCharacterList.RemoveAt(0); }
+        
     }
 
     private void ClearEnemyList()

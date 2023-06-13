@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class SelectYourSlaves : MonoBehaviour
 {
@@ -49,6 +50,8 @@ public class SelectYourSlaves : MonoBehaviour
 
         if (slavesTobattleWith.Count == slaveMax)
         {
+            SceneManager.LoadScene(1);
+            // load scene
             return;
         }
 

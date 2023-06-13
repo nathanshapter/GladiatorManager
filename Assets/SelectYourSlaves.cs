@@ -45,14 +45,26 @@ public class SelectYourSlaves : MonoBehaviour
     {
        
 
+
         activeOption = dropDown.value;
         Slave selectedSlave = selectSlaveMenu.slaves[activeOption];
-        slavesTobattleWith.Add(selectedSlave);
-        print(selectedSlave.character.name);
+       
+       dropDown.options.RemoveAt(activeOption); // this also needs to remove it from the list so it doesnt jumble up the numbers
+        dropDown.RefreshShownValue();
         
+        slavesTobattleWith.Add(selectedSlave);
+        print("you have selected" + selectedSlave.character.name);
+        
+        if(slavesTobattleWith.Count == slaveMax) 
+        {
+            print("You have selected the correct amount of slaves.\n Prepare for battle");
+            foreach (var item in slavesTobattleWith)
+            {
+                print(item.character.name);
+            }
+        }
 
-
-
+    
         
     }
 }

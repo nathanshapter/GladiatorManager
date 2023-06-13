@@ -10,15 +10,22 @@ public class SelectYourSlaves : MonoBehaviour
   [SerializeField]  TMP_Dropdown dropDown;
     SelectSlaveMenu selectSlaveMenu;
     int activeOption;
+
+
+    List<Slave> slavesTobattleWith = new List<Slave>();
+    int slaveMax;
     private void Start()
     {
        
         selectSlaveMenu = FindObjectOfType<SelectSlaveMenu>();
         dropDown = GetComponentInChildren<TMP_Dropdown>();
+      
        
     }
-  public void PopulateDropDown()
+  public void PopulateDropDown(int i)
     {
+
+
         selectSlaveMenu.FindSlaves();
        
        
@@ -29,12 +36,23 @@ public class SelectYourSlaves : MonoBehaviour
             .ToList();
         
         dropDown.options = options;
+        slaveMax = i;
+        print($" Please select {slaveMax} slaves ");
     }
 
 
     public void AddToBattleList()
     {
+       
+
         activeOption = dropDown.value;
-        print(activeOption);
+        Slave selectedSlave = selectSlaveMenu.slaves[activeOption];
+        slavesTobattleWith.Add(selectedSlave);
+        print(selectedSlave.character.name);
+        
+
+
+
+        
     }
 }

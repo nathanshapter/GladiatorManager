@@ -43,28 +43,34 @@ public class SelectYourSlaves : MonoBehaviour
 
     public void AddToBattleList()
     {
-       
-
 
         activeOption = dropDown.value;
         Slave selectedSlave = selectSlaveMenu.slaves[activeOption];
-       
-       dropDown.options.RemoveAt(activeOption); // this also needs to remove it from the list so it doesnt jumble up the numbers
-        dropDown.RefreshShownValue();
-        
-        slavesTobattleWith.Add(selectedSlave);
-        print("you have selected" + selectedSlave.character.name);
-        
-        if(slavesTobattleWith.Count == slaveMax) 
+
+        if (slavesTobattleWith.Count == slaveMax)
         {
-            print("You have selected the correct amount of slaves.\n Prepare for battle");
+            return;
+        }
+
+        // Check if the selected slave's name has already been added
+        if (slavesTobattleWith.Exists(slave => slave.character.name == selectedSlave.character.name))
+        {
+            print("This slave's name has already been added to the battle.");
+            return;
+        }
+
+        slavesTobattleWith.Add(selectedSlave);
+        print("You have selected " + selectedSlave.character.name);
+
+        if (slavesTobattleWith.Count == slaveMax)
+        {
+            print("You have selected the correct amount of slaves. Prepare for battle");
             foreach (var item in slavesTobattleWith)
             {
-                print(item.character.name);
+                print("You have Selected " + item.character.name);
             }
         }
 
-    
-        
+
     }
 }

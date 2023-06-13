@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class DateManager : MonoBehaviour
 {
-    int monthsInYear = 12, weeksInMonth = 4;
+  //  int monthsInYear = 12, weeksInMonth = 4;
 
    
-    int currentDay =1;
+  //  int currentDay =1;
 
     DateTime currentDate;
     private void Start()

@@ -17,7 +17,7 @@ public class SelectSlaveMenu : MonoBehaviour
     [SerializeField] GameObject[] auctionMenu;
     [SerializeField] GameObject battleMenuButton;
     [SerializeField] GameObject slaveAuctionButton;
-
+   [SerializeField] SelectYourSlaves selectYourSlavesForBattle;
     [SerializeField] GameObject battleMenuUI; 
 
     int activeMenu = 0;
@@ -28,22 +28,23 @@ public class SelectSlaveMenu : MonoBehaviour
  [SerializeField]   SlaveBattleMenu slaveBattleMenu;
     private void Start()
     {
-        DisableEverything();
+        DisableEverything(false);
         EnableSlave(activeMenu);
         mySlaves.gameObject.SetActive(false);
-       
+     
         
     }
   public  void EnableBattleMenu()
     {
-        DisableEverything();
+        DisableEverything(false);
         slaveAuctionButton.SetActive(true);
         FindSlaves();
        battleMenuUI.SetActive(true);
         slaveBattleMenu.RollOpponents();
+        
     }
 
-    void DisableEverything()
+ public   void DisableEverything(bool extras)
     {
         foreach (var item in slaveSelection)
         {
@@ -60,11 +61,19 @@ public class SelectSlaveMenu : MonoBehaviour
             item.SetActive(false);
         }
       battleMenuUI.gameObject.SetActive(false);
-      //  battleMenuButton.SetActive(false);
+        selectYourSlavesForBattle.gameObject.SetActive(false);
+        if (extras)
+        {
+            slaveAuctionButton.SetActive(false);
+            slaveBattleMenu.gameObject.SetActive(false);
+            battleMenuButton.SetActive(false);
+        }
+          
+       
     }
     public void PreviousSlave()
     {
-        DisableEverything();
+        DisableEverything(false);
         if(activeMenu ==0)
         {
             activeMenu = slaveSelection.Length -1;
@@ -121,7 +130,7 @@ public class SelectSlaveMenu : MonoBehaviour
         if (yes)
         {
             FindSlaves();
-            DisableEverything();
+            DisableEverything(false);
 
 
 
@@ -202,7 +211,7 @@ public class SelectSlaveMenu : MonoBehaviour
     }
     public void DisableMySlavesMenu()
     {
-        DisableEverything();
+        DisableEverything(false);
         mySlaves.gameObject.SetActive(false);
         EnableSlave(activeMenu);
     }

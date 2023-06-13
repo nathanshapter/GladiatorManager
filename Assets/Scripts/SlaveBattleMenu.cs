@@ -1,4 +1,5 @@
 using JetBrains.Annotations;
+
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -10,13 +11,13 @@ public class SlaveBattleMenu : MonoBehaviour
     [SerializeField] TextMeshProUGUI battle1, battle2, battle3;
     [SerializeField] TextMeshProUGUI[] opponentName1, opponentName2, opponentName3;
   //  [SerializeField] EnemyCharacter[] allOpponents;
-    [SerializeField] List<EnemyCharacter> opponents1, opponents2, opponents3;
+    public List<EnemyCharacter> opponents1, opponents2, opponents3;
     [SerializeField] GameObject opponentNamePrefab;
     public List<EnemyCharacter> allOpponents;
  [SerializeField]   SelectSlaveMenu selectSlaveMenu;
 
     [SerializeField] int enemyAmountLimit = 4;
-   
+   public int slaveAmountToPass1, slaveAmountToPass2, slaveAmountToPass3;
     private void Start()
     {
        
@@ -31,14 +32,14 @@ public class SlaveBattleMenu : MonoBehaviour
 
     public void RollOpponents() // tmp, tmp, list<enemycharacter>
     {
-        GenerateOpponents(opponentName1, battle1, opponents1, true);
-        GenerateOpponents(opponentName2, battle2,opponents2, false);
-        GenerateOpponents(opponentName3, battle3, opponents3,false);
+        GenerateOpponents(opponentName1, battle1, opponents1, true, 1);
+        GenerateOpponents(opponentName2, battle2,opponents2, false,2);
+        GenerateOpponents(opponentName3, battle3, opponents3,false,3);
       
         
     }
 
-    void GenerateOpponents(TMP_Text[] opponentNames, TMP_Text battleText, List<EnemyCharacter> enemyCharacterList, bool clearList)
+    void GenerateOpponents(TMP_Text[] opponentNames, TMP_Text battleText, List<EnemyCharacter> enemyCharacterList, bool clearList, int slaveInt)
     {
         if (clearList) { ClearEnemyList(); }   
 
@@ -77,15 +78,32 @@ public class SlaveBattleMenu : MonoBehaviour
                 opponentNames[i].text = string.Empty;
             }
         }
-        if (Random.Range(0, 100) > 75)
+        int numberToUse = Random.Range(0, 100);
+        if (numberToUse > 75)
         {
             amountOfCharacterSlaves = 1;
         }
+        else if(numberToUse < 25)
+        {
+            amountOfCharacterSlaves = 2;
+        }
+       
         battleText.text = $"{amountOfCharacterSlaves}v{amountOfEnemies}";
         CreateNewEnemyCharacter();
 
         if(enemyCharacterList.Count > amountOfEnemies) { enemyCharacterList.RemoveAt(0); }
         
+
+        switch(slaveInt)
+        {
+            case 1:
+                slaveAmountToPass1 = amountOfCharacterSlaves; break;
+                case 2:
+                slaveAmountToPass2= amountOfCharacterSlaves; break;
+                case 3:
+                slaveAmountToPass3= amountOfCharacterSlaves; break;
+        }
+
     }
 
     private void ClearEnemyList()

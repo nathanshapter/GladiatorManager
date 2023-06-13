@@ -32,13 +32,14 @@ public class AcceptBattle : MonoBehaviour
                 print("opponents count: " + slavebattleMenu.opponents3.Count);
                 OpenSlaveSelectForFight(i); 
                 break;
-
+                
         }
+        selectYourSlavesForBattle.gameObject.SetActive(true);
     }
     void OpenSlaveSelectForFight(int i)
     {
         SelectSlaveMenu.DisableEverything(true);
-        selectYourSlavesForBattle.gameObject.SetActive(true);
+        
 
 
         switch (i)
@@ -60,7 +61,7 @@ public class AcceptBattle : MonoBehaviour
 
 
 
-       
+        selectYourSlavesForBattle.PopulateDropDown();
    
 
       

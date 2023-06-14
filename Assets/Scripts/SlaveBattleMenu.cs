@@ -85,8 +85,9 @@ public class SlaveBattleMenu : MonoBehaviour
         {
             amountOfCharacterSlaves = 1;
         }
-        else if(numberToUse < 25)
+        else if(numberToUse < 25 && amountOfCharacterSlaves > 1)
         {
+            
             amountOfCharacterSlaves = 2;
         }
        

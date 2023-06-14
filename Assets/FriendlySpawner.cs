@@ -7,7 +7,7 @@ public class FriendlySpawner : MonoBehaviour
     BattleSceneSlaves battleSceneSlaves;
     [SerializeField] List<Character> battleSlaves = new List<Character>();
 
-
+    [SerializeField] GameObject friendlyPrefab;
     void Start()
     {
         StartCoroutine(GetSlaveScript());
@@ -18,7 +18,8 @@ public class FriendlySpawner : MonoBehaviour
     void ProcessSlaves()
     {
         battleSlaves = battleSceneSlaves.playerBattleSlaves;
-        print("test");
+   
+        SpawnFriendlyGladiators();
     }
 
     private IEnumerator GetSlaveScript()
@@ -27,5 +28,10 @@ public class FriendlySpawner : MonoBehaviour
         battleSceneSlaves = FindObjectOfType<BattleSceneSlaves>();
         yield return new WaitForSeconds(1);
         ProcessSlaves();
+    }
+
+    void SpawnFriendlyGladiators()
+    {
+
     }
 }

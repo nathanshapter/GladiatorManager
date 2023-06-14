@@ -14,7 +14,7 @@ public class BattleSceneSlaves : MonoBehaviour
 
     private void Awake()
     {
-        print("hello");
+       
         if(instance ==null)
         {
             instance = this;
@@ -37,7 +37,7 @@ public class BattleSceneSlaves : MonoBehaviour
         playerBattleSlaves = slavesToBattleWith;
         foreach (var item in playerBattleSlaves)
         {
-            print(item.slaveName);
+            print(item.slaveName + " has been passed to battleSceneSlaves.");
         }
     }
     public void CopyEnemySlaves(List<EnemyCharacter> slavesToBattleAgainst)

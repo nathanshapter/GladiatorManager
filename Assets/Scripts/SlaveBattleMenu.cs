@@ -114,7 +114,7 @@ public class SlaveBattleMenu : MonoBehaviour
                 break;
         }
         
-        print("check");
+      
     }
 
     private void ClearEnemyList()

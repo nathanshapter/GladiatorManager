@@ -122,7 +122,7 @@ public class SelectSlaveMenu : MonoBehaviour
   public  void FindSlaves()
     {
         slaves = FindObjectsOfType<Slave>();
-        print(slaves.Length);
+       
     }
     public void MySlavesMenu(bool yes) // the bool is set to false when you just want to update the text, else a full reload is marked for true
     {

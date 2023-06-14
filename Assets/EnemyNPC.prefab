@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5379265072823920958}
   - component: {fileID: 5379265072823920957}
   - component: {fileID: 2067977481839916644}
+  - component: {fileID: -4972074981350459811}
   m_Layer: 0
   m_Name: EnemyNPC
   m_TagString: Untagged
@@ -133,6 +134,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyCharacter: {fileID: 0}
+--- !u!58 &-4972074981350459811
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5379265072823920956}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &5379265073181774316
 GameObject:
   m_ObjectHideFlags: 0

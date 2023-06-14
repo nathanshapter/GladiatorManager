@@ -16,10 +16,6 @@ public class EnemyGladiatorNPC : MonoBehaviour
 
     private void Update()
     {
-      //  if(Vector2.Distance(this.transform.position, ai.target.transform.position) < 3)
-        {
-          //  ai.target.GetComponent<GladiatorNPC>().health -= 10;
-        //    print(ai.target.GetComponent<GladiatorNPC>().health);
-        }
+       
     }
 }

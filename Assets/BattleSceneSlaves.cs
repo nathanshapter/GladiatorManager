@@ -4,24 +4,25 @@ using UnityEngine;
 
 public class BattleSceneSlaves : MonoBehaviour
 {
-    BattleSceneSlaves instance;
+    static BattleSceneSlaves instance;
 
     SelectYourSlaves selectYourSlaves;
-   [SerializeField]  List<Character> playerBattleSlaves = new List<Character>();
- [SerializeField]   List<EnemyCharacter> enemyBattleSlaves = new List<EnemyCharacter>();
+  public  List<Character> playerBattleSlaves = new List<Character>();
+ public  List<EnemyCharacter> enemyBattleSlaves = new List<EnemyCharacter>();
 
     [SerializeField] GameObject enemyNPC;
 
     private void Awake()
     {
-        if(instance !=null)
+        print("hello");
+        if(instance ==null)
         {
-            Destroy(gameObject); 
+            instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
-            instance = this;
-            DontDestroyOnLoad(instance);
+            Destroy(gameObject);
         }
     }
 

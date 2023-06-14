@@ -153,8 +153,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   battleSceneSlaves: {fileID: 0}
-  battleSlaves: []
+  enemyBattleSlaves: []
+  friendlyBattleSlaves: []
   enemyPrefab: {fileID: 5379265072823920956, guid: 1476630717b03644da41604ababe338d, type: 3}
+  enemyGladiatorNPCs: []
+  spawnEdge1: {fileID: 2068880007}
+  spawnEdge2: {fileID: 760956849}
+  spawnRange: 1
 --- !u!4 &57658527
 Transform:
   m_ObjectHideFlags: 0
@@ -166,9 +171,73 @@ Transform:
   m_LocalPosition: {x: 7.33, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 760956849}
+  - {fileID: 2068880007}
   m_Father: {fileID: 0}
   m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &660352467
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 660352468}
+  m_Layer: 0
+  m_Name: SpawnEdgeBottom (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &660352468
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 660352467}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.34, y: -2.85, z: 0}
+  m_LocalScale: {x: 1, y: 9.0167, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1429869488}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &760956848
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 760956849}
+  m_Layer: 0
+  m_Name: SpawnEdgeTop
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &760956849
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 760956848}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.00000047683716, y: 4.15, z: 0}
+  m_LocalScale: {x: 1, y: 9.0167, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 57658527}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1077560038
 GameObject:
@@ -283,8 +352,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dec539624cc34f4a958104694794e98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  battleSlaves: []
+  friendlyBattleSlaves: []
+  enemyBattleSlaves: []
   friendlyPrefab: {fileID: 5379265072823920956, guid: 60c2b04c93c9256499f71527f5e6c11a, type: 3}
+  playerGladiatorNPCs: []
+  spawnEdge1: {fileID: 2036953379}
+  spawnEdge2: {fileID: 660352468}
+  spawnRange: 1
 --- !u!4 &1429869488
 Transform:
   m_ObjectHideFlags: 0
@@ -296,7 +370,9 @@ Transform:
   m_LocalPosition: {x: -6.72, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2036953379}
+  - {fileID: 660352468}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -499,7 +575,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   data:
-    dataString: UEsDBBQAAAgIAACYn+u8iScfWwIAABMFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VE1v2zAM/SuBzutgB1277La5abpD26DZ0IsvtEzHQmTJ0EeTtMh/HyXbsZdhpyjvPZKPFOUPJpRtkTttVkaUj7pE9m3Gwpl9mo3kAx5gq9VGvOOgeRWlq4MIouYFnNCEpyHM6gadEfy72sogTgj0SlTaNMtyi5m2zhJcgbRIlNEuRCuCPmbsQD9XixBypNP8Npze6bRIZic6clQOzSgdhIOsU3nFJTQtlsHyKJ4P6nQeZYqa6RXBONdSCts7Ye7Yxk4zaK2nPkhQCqDOYvn08zUBNYpt7ULmafhzVVl0vSkDxzthaERdXvZDd3NrwO46Z28gfah0cx1NdTkf/6Gv0khXRjcPQ9k0CSVcLfjuBY4crJvMdQrfTZzH+exB7qCQ+FqjetIro70qiXTGh1BvcX43/j13ltXIdyPeWb0Affv/2wk9nGLzh0yKpghUHCQBG6njwOPdo6Gr+UmG42bYPgWhwcVvi79gO12hnrgXxjqi+i5VsFdob4KULePMQjfeZdoojHBvukUF0h3XlMZd3uAFNyl7wdxDeCx98Z4b3sBFSIRHfZJcUGu9P1+WrfX+EW397J0UCkfTgXiiOWVaqW7BpjMZwjbeVMAnYVsvyr9XiwEvbhcJT4okvS3mkF5hUsHi+kt6w4sKvhZzFndPKOoT5Loz2o+Hbk2NyRXt2fANma0MtHHZSwP7lXhv9GTkQlV6ww2ieu4ynI2joSL0LMtlKWhAG3ROqHjf7CNnUvMdlvk5UR47XR6cgXzMkrNWvGkXkJxl8aORswCfd3lt8E3gPhQfkp3Y6Q9QSwMEFAAACAgAAJif66DlBRttAAAAeAAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw0TPSMzTXUVBKL0osyCgGihiCOKWZKSB2tFJicpK5pUGyQZKBoXmSUaKhbqpBWqKliamhWXJSWqJFkpFSLFB9SWVBql9ibipET0BiSUZaZl5KZl66nntRZoo7yGil2FoAUEsBAi0AFAAACAgAAJif67yJJx9bAgAAEwUAAAsAJAAAAAAAAAAAAAAAAAAAAGdyYXBoMC5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAAJif66DlBRttAAAAeAAAAAkAJAAAAAAAAAAAAAAAqAIAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAgACALgAAABgAwAAAAA=
+    dataString: UEsDBBQAAAgIAACYn+spvdlYYwIAABoFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVE1z2jAQ/SuMzoWxPSSU3lpDSA9JmNBOLr7I8hprkCWPPgIkw3/vSraxS04sb9/uvv2QPwmXpgFmld5oXjypAsiPCfE2+TYZnI9wonsld/wDes4bL2zlSTRwXqnlCvHYhxlVg9Wc/ZR74ckRgk7yUul6XewhVcYahEsqDKBLK+ujJUKfE3LCn+nSh5zRShbe+kBrGU0uaDKQFvRA7YnTaHbXMVuik0zQuoHCqx74SdIFxMksDkSJHXWceOb1MyUEN50gYs9NaDiljXHYDhIKTrHBoCKe+XwV8H1lffZx+EtZGrCdRk3PK65xUm1e8ku146upObTq3qlwvtL9PMhqcz59cU9b1aVW9WNfNo58CVtxdnilZ0aNHY13DK9GysOMjlQcaC7grQL5rDZaOVmg02rnQ52BZDX8vXaWVsAOA95KvQFd83VJ/S59D5fQ/CkVvM69azZvgZ1QYeDhBEDjcn6j4HAgpkuBqFfx18Afuh9fUud44NpYdHVdSi8vV057KlmHmflunE2VlhDgTnQDkgp73mIae7vBG9+o7I3ngfo30xXvfP1TuAkJ8MCPohvXVh2vyzKVOj6BqV6cFVzCINo7nnFOqZKyPbDxTPqwndMlZaOwvePF/6dFKMsXy4hFeRQv8oTGU4hKupzfxfcsL+n3PCHh9rjEPqnYtkK78eDW5JBc4p31n5LJRtMmHHuh6XHDP2o1GjmXpdoxDSBf2gxX4aCxCD7MYl1wHNAOrOUy7Jt8ZkQodoAiuybKQqfrk9U0G7JkpOHvynokI2n4dmTEw9db3mp453D0xftkF3L5B1BLAwQUAAAICAAAmJ/roOUFG20AAAB4AAAACQAkAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAatWKkstKs7Mz1OyUjDRM9IzNNdRUEovSizIKAaKGII4pZkpIHa0UmJykrmlQbJBkoGheZJRoqFuqkFaoqWJqaFZclJaokWSkVIsUH1JZUGqX2JuKkRPQGJJRlpmXkpmXrqee1FmijvIaKXYWgBQSwECLQAUAAAICAAAmJ/rKb3ZWGMCAAAaBQAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICAAAmJ/roOUFG20AAAB4AAAACQAkAAAAAAAAAAAAAACwAgAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAACAAIAuAAAAGgDAAAAAA==
     upgradeData: 
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
@@ -665,7 +741,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2010617524}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.42, y: -3.36, z: 10}
+  m_LocalPosition: {x: -0.13, y: -1.38, z: 10}
   m_LocalScale: {x: 0.51971126, y: 8.99432, z: 1.1237}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -811,8 +887,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2026742447}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.03, y: -0.03, z: 10}
-  m_LocalScale: {x: 0.51971126, y: 8.99432, z: 1.1237}
+  m_LocalPosition: {x: -3.09, y: 0.44, z: 10}
+  m_LocalScale: {x: 0.51971126, y: 6.8581686, z: 1.1237}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2011022145}
@@ -896,3 +972,65 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &2036953378
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2036953379}
+  m_Layer: 0
+  m_Name: SpawnEdgeTop (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2036953379
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2036953378}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.34000015, y: 4.15, z: 0}
+  m_LocalScale: {x: 1, y: 9.0167, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1429869488}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2068880006
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2068880007}
+  m_Layer: 0
+  m_Name: SpawnEdgeBottom
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2068880007
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2068880006}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.00000047683716, y: -2.85, z: 0}
+  m_LocalScale: {x: 1, y: 9.0167, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 57658527}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

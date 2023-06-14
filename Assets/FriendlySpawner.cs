@@ -12,7 +12,10 @@ public class FriendlySpawner : MonoBehaviour
 
 
    public List<PlayerGladiatorNPC> playerGladiatorNPCs = new List<PlayerGladiatorNPC>();
-   
+
+    [SerializeField] Transform spawnEdge1, spawnEdge2;
+    [SerializeField] float spawnRange;
+
     void Start()
     {
       //  enemySpawner = FindObjectOfType<EnemySpawner>();
@@ -38,15 +41,35 @@ public class FriendlySpawner : MonoBehaviour
 
     void SpawnFriendlyGladiators()
     {
-        foreach (var item in friendlyBattleSlaves)
+        int numberOfFriendlies = friendlyBattleSlaves.Count;
+
+        for (int i = 0; i < numberOfFriendlies; i++)
         {
-
-
             GameObject newFriendly = Instantiate(friendlyPrefab, this.transform);
-            newFriendly.GetComponent<PlayerGladiatorNPC>().character = item;
-         StartCoroutine(SetTarget(newFriendly));
-           playerGladiatorNPCs.Add(newFriendly.GetComponent<PlayerGladiatorNPC>());
+            newFriendly.GetComponent<PlayerGladiatorNPC>().character= friendlyBattleSlaves[i];
+
+            float t = (float)i/ (numberOfFriendlies -1);
+
+            float curveValue = Mathf.Pow(1f - t, 2f);
+
+            Vector3 spawnPosition = Vector3.Lerp(spawnEdge1.position, spawnEdge2.position, curveValue);
+
+            spawnPosition += Random.insideUnitSphere * spawnRange;
+            spawnPosition.y = Mathf.Clamp(spawnPosition.y, spawnEdge1.position.y, spawnEdge2.position.y);
+
+        
+
+            newFriendly.transform.position = spawnPosition;
+            
+
+
+            StartCoroutine(SetTarget(newFriendly));
+            playerGladiatorNPCs.Add(newFriendly.GetComponent<PlayerGladiatorNPC>());
         }
+
+
+
+
     }
 
 

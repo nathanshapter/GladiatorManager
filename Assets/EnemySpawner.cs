@@ -20,7 +20,7 @@ public class EnemySpawner : MonoBehaviour
     // Start is called before the first frame update
 
 
-    [SerializeField] Transform spawnEdge1, spawnEdge2;
+    [SerializeField] Transform spawnEdge1, spawnEdge2, oneVSoneSpawn;
     [SerializeField] float spawnRange;
     void Start()
     {
@@ -67,10 +67,14 @@ public class EnemySpawner : MonoBehaviour
             spawnPosition += Random.insideUnitSphere * spawnRange;
 
             // Clamp the Y-axis position to ensure it stays within the desired range
+            
             spawnPosition.y = Mathf.Clamp(spawnPosition.y, spawnEdge1.position.y, spawnEdge2.position.y);
 
          
-
+            if(numberOfEnemies == 1)
+            {
+                spawnPosition = oneVSoneSpawn.position;
+            }
             // Set the position of the new enemy
 
             newEnemy.transform.position = spawnPosition;

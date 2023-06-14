@@ -13,7 +13,7 @@ public class FriendlySpawner : MonoBehaviour
 
    public List<PlayerGladiatorNPC> playerGladiatorNPCs = new List<PlayerGladiatorNPC>();
 
-    [SerializeField] Transform spawnEdge1, spawnEdge2;
+    [SerializeField] Transform spawnEdge1, spawnEdge2, oneVSOneSpawn;
     [SerializeField] float spawnRange;
 
     void Start()
@@ -57,7 +57,10 @@ public class FriendlySpawner : MonoBehaviour
             spawnPosition += Random.insideUnitSphere * spawnRange;
             spawnPosition.y = Mathf.Clamp(spawnPosition.y, spawnEdge1.position.y, spawnEdge2.position.y);
 
-        
+        if(numberOfFriendlies == 1)
+            {
+                spawnPosition = oneVSOneSpawn.position;
+            }
 
             newFriendly.transform.position = spawnPosition;
             

@@ -32,6 +32,14 @@ public class FriendlySpawner : MonoBehaviour
 
     void SpawnFriendlyGladiators()
     {
+        foreach (var item in battleSlaves)
+        {
 
+
+            GameObject newFriendly = Instantiate(friendlyPrefab, this.transform);
+            newFriendly.GetComponent<PlayerGladiatorNPC>().character = item;
+            print("spawn check " + newFriendly.GetComponent<PlayerGladiatorNPC>().character.slaveName);
+
+        }
     }
 }

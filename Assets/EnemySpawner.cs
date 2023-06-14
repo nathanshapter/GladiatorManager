@@ -33,12 +33,12 @@ public class EnemySpawner : MonoBehaviour
     void SpawnEnemyGladiator()
     {
         foreach (var item in battleSlaves)
-        {
-            
+        {          
 
-            print(item.slaveName + " was spawned.");
+          
          GameObject newEnemy =    Instantiate(enemyPrefab, this.transform);
-            newEnemy.GetComponent<EnemyGladiatorNPC>().ec = item;
+            newEnemy.GetComponent<EnemyGladiatorNPC>().enemyCharacter = item;
+          
         }
     }
 }

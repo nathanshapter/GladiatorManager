@@ -6,7 +6,7 @@ using Pathfinding;
 public class EnemyGladiatorNPC : MonoBehaviour
 {
     AIDestinationSetter ai;
- public   EnemyCharacter ec;
+ public   EnemyCharacter enemyCharacter;
 
     private void Start()
     {

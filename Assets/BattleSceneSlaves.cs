@@ -9,6 +9,8 @@ public class BattleSceneSlaves : MonoBehaviour
     SelectYourSlaves selectYourSlaves;
     List<Slave> battleSlaves = new List<Slave>();
 
+    [SerializeField] GameObject enemyNPC;
+
     private void Awake()
     {
         if(instance !=null)

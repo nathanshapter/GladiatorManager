@@ -18,9 +18,11 @@ public class SlaveBattleMenu : MonoBehaviour
 
     [SerializeField] int enemyAmountLimit = 4;
    public int slaveAmountToPass1, slaveAmountToPass2, slaveAmountToPass3;
+
+    BattleSceneSlaves battleSceneSlaves;
     private void Start()
     {
-       
+       battleSceneSlaves = FindObjectOfType<BattleSceneSlaves>();
        
         RollOpponents();
       
@@ -55,7 +57,7 @@ public class SlaveBattleMenu : MonoBehaviour
         }
 
 
-        int amountOfEnemies = Random.Range(1, amountOfEnemiesLimit + 1);
+        int amountOfEnemies = Random.Range(1, amountOfEnemiesLimit +1);
 
         int amountOfCharacterSlaves = amountOfEnemies;
 
@@ -97,13 +99,22 @@ public class SlaveBattleMenu : MonoBehaviour
         switch(slaveInt)
         {
             case 1:
-                slaveAmountToPass1 = amountOfCharacterSlaves; break;
-                case 2:
-                slaveAmountToPass2= amountOfCharacterSlaves; break;
-                case 3:
-                slaveAmountToPass3= amountOfCharacterSlaves; break;
-        }
+                slaveAmountToPass1 = amountOfCharacterSlaves;
+                
+                break;
+              
 
+                // put the code to copy enemies in
+                case 2:
+                slaveAmountToPass2= amountOfCharacterSlaves;
+                 break;
+                case 3:
+                slaveAmountToPass3= amountOfCharacterSlaves;
+               // 
+                break;
+        }
+        
+        print("check");
     }
 
     private void ClearEnemyList()

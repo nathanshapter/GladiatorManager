@@ -8,12 +8,14 @@ public class AcceptBattle : MonoBehaviour
     SelectSlaveMenu SelectSlaveMenu;
 
     [SerializeField] SelectYourSlaves selectYourSlavesForBattle;
+    BattleSceneSlaves battleSceneSlaves;
 
     private void Start()
     {
         slavebattleMenu= GetComponentInParent<SlaveBattleMenu>();
         SelectSlaveMenu= GetComponentInParent<SelectSlaveMenu>();
         selectYourSlavesForBattle = FindObjectOfType<SelectYourSlaves>();
+        battleSceneSlaves= FindObjectOfType<BattleSceneSlaves>();
     }
 
     public void AcceptSlaveBattle(int i) // the i is to be chosen in button inspector to say the battle you want to accept
@@ -23,14 +25,17 @@ public class AcceptBattle : MonoBehaviour
             case 0:
                 print("opponents count: "+ slavebattleMenu.opponents1.Count);
                 OpenSlaveSelectForFight(i);
+                battleSceneSlaves.CopyEnemySlaves(slavebattleMenu.opponents1);
                 break;
             case 1:
                 print("opponents count: " + slavebattleMenu.opponents2.Count);
                 OpenSlaveSelectForFight(i);
+                battleSceneSlaves.CopyEnemySlaves(slavebattleMenu.opponents2);
                 break;
                 case 2:
                 print("opponents count: " + slavebattleMenu.opponents3.Count);
-                OpenSlaveSelectForFight(i); 
+                OpenSlaveSelectForFight(i);
+                battleSceneSlaves.CopyEnemySlaves(slavebattleMenu.opponents3);
                 break;
                 
         }

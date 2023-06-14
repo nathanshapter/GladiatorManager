@@ -13,8 +13,10 @@ public class SelectYourSlaves : MonoBehaviour
     int activeOption;
     BattleSceneSlaves battleSceneSlaves;
 
-    List<Slave> slavesTobattleWith = new List<Slave>();
+    List<Character> slavesTobattleWith = new List<Character>();
     int slaveMax;
+
+    [SerializeField] TextMeshProUGUI buttonText;
     private void Start()
     {
        
@@ -50,29 +52,32 @@ public class SelectYourSlaves : MonoBehaviour
 
         if (slavesTobattleWith.Count == slaveMax)
         {
-            battleSceneSlaves.CopySlaves(slavesTobattleWith);
+          
+            
             SceneManager.LoadScene(1);
             // load scene
             return;
         }
 
         // Check if the selected slave's name has already been added
-        if (slavesTobattleWith.Exists(slave => slave.character.name == selectedSlave.character.name))
+        if (slavesTobattleWith.Exists(slave => slave.name == selectedSlave.character.name))
         {
             print("This slave's name has already been added to the battle.");
             return;
         }
 
-        slavesTobattleWith.Add(selectedSlave);
+        slavesTobattleWith.Add(selectedSlave.character);
         print("You have selected " + selectedSlave.character.name);
 
         if (slavesTobattleWith.Count == slaveMax)
         {
             print("You have selected the correct amount of slaves. Prepare for battle");
+            buttonText.text = "Begin battle";
             foreach (var item in slavesTobattleWith)
             {
-                print("You have Selected " + item.character.name);
+                print("You have Selected " + item.name);
             }
+            battleSceneSlaves.CopyPlayerSlaves(slavesTobattleWith);
         }
 
 

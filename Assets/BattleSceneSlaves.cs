@@ -7,7 +7,8 @@ public class BattleSceneSlaves : MonoBehaviour
     BattleSceneSlaves instance;
 
     SelectYourSlaves selectYourSlaves;
-    List<Slave> battleSlaves = new List<Slave>();
+   [SerializeField]  List<Character> playerBattleSlaves = new List<Character>();
+ [SerializeField]   List<EnemyCharacter> enemyBattleSlaves = new List<EnemyCharacter>();
 
     [SerializeField] GameObject enemyNPC;
 
@@ -20,6 +21,7 @@ public class BattleSceneSlaves : MonoBehaviour
         else
         {
             instance = this;
+            DontDestroyOnLoad(instance);
         }
     }
 
@@ -28,13 +30,20 @@ public class BattleSceneSlaves : MonoBehaviour
         selectYourSlaves = FindObjectOfType<SelectYourSlaves>();
     }
 
- public   void CopySlaves(List<Slave> slavesToBattleWith)
+ public   void CopyPlayerSlaves(List<Character> slavesToBattleWith)
     {
-        battleSlaves.Clear();
-        battleSlaves = slavesToBattleWith;
-        foreach (var item in battleSlaves)
+        playerBattleSlaves.Clear();
+        playerBattleSlaves = slavesToBattleWith;
+        foreach (var item in playerBattleSlaves)
         {
-            print(item.character.slaveName);
+            print(item.slaveName);
         }
     }
+    public void CopyEnemySlaves(List<EnemyCharacter> slavesToBattleAgainst)
+    {
+        enemyBattleSlaves.Clear();
+        enemyBattleSlaves = slavesToBattleAgainst;
+    }
+
+   
 }

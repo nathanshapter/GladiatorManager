@@ -12,20 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21f92f0eb46aeaa4fa66eb256d74d22d, type: 3}
   m_Name: EnemyCharacter 4
   m_EditorClassIdentifier: 
-  slaveName: Avienus
+  slaveName: Castinus
   slaveinfo: 
-  strength: 3
-  defence: 6
+  strength: 2
+  defence: 0
   intelligence: 4
   charisma: 7
-  agility: 3
-  endurance: 7
-  accuracy: 6
-  resilience: 1
-  leadership: 1
-  luck: 9
+  agility: 7
+  endurance: 4
+  accuracy: 2
+  resilience: 8
+  leadership: 0
+  luck: 7
   maxStat: 0
   minStat: 0
   slavePrefab: {fileID: 0}
-  characterSprite: {fileID: 21300000, guid: dd08a48242c9b7a49bd56e3e1d1da693, type: 3}
-  avgScore: 4
+  characterSprite: {fileID: 21300000, guid: ac1bb6af0394eed458c05cdcfabffa78, type: 3}
+  avgScore: 3

@@ -27,4 +27,4 @@ MonoBehaviour:
   luck: 0
   slavePrefab: {fileID: 5379265072823920956, guid: 60c2b04c93c9256499f71527f5e6c11a, type: 3}
   avgScore: 7
-  sprite: {fileID: 21300000, guid: c5632919c7eedf34ea3fce4ddb103880, type: 3}
+  sprite: {fileID: 21300000, guid: b5f40b42ce02da34b8927f96da1d9d1d, type: 3}

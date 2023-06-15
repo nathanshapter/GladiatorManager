@@ -25,7 +25,7 @@ public class SlaveSelectionButton : MonoBehaviour
             $"Resilience: {character.resilience}, Leadership: {character.leadership}, Luck: {character.luck} " 
             ;
 
-        Sprite defaultSprite = Resources.Load<Sprite>("DefaultCharacterSprite");
+       
       
     }
    

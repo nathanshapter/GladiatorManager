@@ -32,12 +32,12 @@ public class EnemyCharacter : ScriptableObject
         luck = Random.Range(0, 10);
 
         slaveName = ReturnName();
+        avgScore = Mathf.RoundToInt((strength+defence+intelligence+agility+endurance+accuracy+resilience+leadership+luck)/10);
     }
-    public void RandomizeStrength()
-    {
-        strength = Random.Range(0, 10);
-    }
+    public int avgScore;
 
+   
+    
     private string ReturnName()
     {
        string name = names[Random.Range(0, names.Length)];

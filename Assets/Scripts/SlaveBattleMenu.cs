@@ -10,6 +10,7 @@ public class SlaveBattleMenu : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI battle1, battle2, battle3;
     [SerializeField] TextMeshProUGUI[] opponentName1, opponentName2, opponentName3;
+    [SerializeField] TextMeshProUGUI[] opponentAvgStat1, opponentAvgStat2, opponentAvgStat3;
   //  [SerializeField] EnemyCharacter[] allOpponents;
     public List<EnemyCharacter> opponents1, opponents2, opponents3;
     [SerializeField] GameObject opponentNamePrefab;
@@ -34,14 +35,14 @@ public class SlaveBattleMenu : MonoBehaviour
 
     public void RollOpponents() // tmp, tmp, list<enemycharacter>
     {
-        GenerateOpponents(opponentName1, battle1, opponents1, true, 1);
-        GenerateOpponents(opponentName2, battle2,opponents2, false,2);
-        GenerateOpponents(opponentName3, battle3, opponents3,false,3);
+        GenerateOpponents(opponentName1, battle1, opponents1, true, 1, opponentAvgStat1);
+        GenerateOpponents(opponentName2, battle2,opponents2, false,2, opponentAvgStat2);
+        GenerateOpponents(opponentName3, battle3, opponents3,false,3, opponentAvgStat3);
       
         
     }
 
-    void GenerateOpponents(TMP_Text[] opponentNames, TMP_Text battleText, List<EnemyCharacter> enemyCharacterList, bool clearList, int slaveInt)
+    void GenerateOpponents(TMP_Text[] opponentNames, TMP_Text battleText, List<EnemyCharacter> enemyCharacterList, bool clearList, int slaveInt,TMP_Text[] avgStat)
     {
         if (clearList) { ClearEnemyList(); }   
 
@@ -68,7 +69,7 @@ public class SlaveBattleMenu : MonoBehaviour
                 
                 int numberOfEnemyCharacter = Random.Range(0, allOpponents.Count);
                 opponentNames[i].text = allOpponents[numberOfEnemyCharacter].slaveName;
-
+                avgStat[i].text = " Avg stat: " + allOpponents[numberOfEnemyCharacter].avgScore.ToString();
                 enemyCharacterList.Add(allOpponents[numberOfEnemyCharacter]);
                
                
@@ -78,6 +79,7 @@ public class SlaveBattleMenu : MonoBehaviour
             else
             {
                 opponentNames[i].text = string.Empty;
+                avgStat[i].text = string.Empty; 
             }
         }
         int numberToUse = Random.Range(0, 100);
@@ -93,7 +95,7 @@ public class SlaveBattleMenu : MonoBehaviour
        
         battleText.text = $"{amountOfCharacterSlaves}v{amountOfEnemies}";
         CreateNewEnemyCharacter();
-
+     
         if(enemyCharacterList.Count > amountOfEnemies) { enemyCharacterList.RemoveAt(0); }
         
 

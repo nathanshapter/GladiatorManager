@@ -13,10 +13,10 @@ public class SlaveSelectionButton : MonoBehaviour
     MoneyManager money;
     SlaveManager sm;
     bool purchased;
-    [SerializeField]  SpriteRenderer spriteRenderer;
+
     private void Start()
     {
-      
+     
         sm = FindObjectOfType<SlaveManager>();
         money = FindObjectOfType<MoneyManager>();
         buttonText.text = character.slaveName + $" The price is {character.slavePrice}";
@@ -24,7 +24,9 @@ public class SlaveSelectionButton : MonoBehaviour
             $"Charisma: {character.charisma}, Agility: {character.agility}, Endurance: {character.endurance}, Accuracy: {character.accuracy}," +
             $"Resilience: {character.resilience}, Leadership: {character.leadership}, Luck: {character.luck} " 
             ;
-        
+
+        Sprite defaultSprite = Resources.Load<Sprite>("DefaultCharacterSprite");
+      
     }
    
     public void BuySlave()

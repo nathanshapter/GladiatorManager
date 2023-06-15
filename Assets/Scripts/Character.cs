@@ -19,6 +19,8 @@ public class Character : ScriptableObject
 
 
     public Sprite sprite;
+
+   public GameObject replacementSlavePrefab;
     private void OnEnable()
     {
 

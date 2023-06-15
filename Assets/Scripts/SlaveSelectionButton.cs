@@ -26,7 +26,8 @@ public class SlaveSelectionButton : MonoBehaviour
             ;
 
        
-      
+      Instantiate(character.replacementSlavePrefab);
+        
     }
    
     public void BuySlave()

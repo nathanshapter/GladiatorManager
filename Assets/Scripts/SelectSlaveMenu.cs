@@ -175,8 +175,8 @@ public class SelectSlaveMenu : MonoBehaviour
                 //  item.text = $"change this to info string + {slaves[numberInfo].character.name}";
                 item.text = $"This slaves stats are Strength: {slaves[numberInfo].character.strength},\nDefence: {slaves[numberInfo].character.defence},\nIntelligence: {slaves[numberInfo].character.intelligence},\n" +
                 $"Charisma: {slaves[numberInfo].character.charisma},\nAgility: {slaves[numberInfo].character.agility},\nEndurance: {slaves[numberInfo].character.endurance},\nAccuracy: {slaves[numberInfo].character.accuracy},\n" +
-                $"Resilience: {slaves[numberInfo].character.resilience},\nLeadership: {slaves[numberInfo].character.leadership},\nLuck: {slaves[numberInfo].character.luck},\n" +
-                $"There Max stat is {slaves[numberInfo].character.maxStat},\nand minimum stat is {slaves[numberInfo].character.minStat}";
+                $"Resilience: {slaves[numberInfo].character.resilience},\nLeadership: {slaves[numberInfo].character.leadership},\nLuck: {slaves[numberInfo].character.luck},\n" 
+                ;
                 numberInfo++;
             }
             Array.Reverse(slaves);
@@ -192,8 +192,8 @@ public class SelectSlaveMenu : MonoBehaviour
                 //  item.text = $"change this to info string + {slaves[numberInfo].character.name}";
                 item.text = $"This slaves stats are Strength: {slaves[numberInfo].character.strength},\nDefence: {slaves[numberInfo].character.defence},\nIntelligence: {slaves[numberInfo].character.intelligence},\n" +
                 $"Charisma: {slaves[numberInfo].character.charisma},\nAgility: {slaves[numberInfo].character.agility},\nEndurance: {slaves[numberInfo].character.endurance},\nAccuracy: {slaves[numberInfo].character.accuracy},\n" +
-                $"Resilience: {slaves[numberInfo].character.resilience},\nLeadership: {slaves[numberInfo].character.leadership},\nLuck: {slaves[numberInfo].character.luck},\n" +
-                $"There Max stat is {slaves[numberInfo].character.maxStat},\nand minimum stat is {slaves[numberInfo].character.minStat}";
+                $"Resilience: {slaves[numberInfo].character.resilience},\nLeadership: {slaves[numberInfo].character.leadership},\nLuck: {slaves[numberInfo].character.luck},\n" 
+                ;
                 numberInfo++;
             }
             Array.Reverse(slaves);

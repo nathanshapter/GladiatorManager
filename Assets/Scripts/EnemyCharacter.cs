@@ -14,6 +14,7 @@ public class EnemyCharacter : ScriptableObject
    
 
     public GameObject slavePrefab;
+    public Sprite characterSprite;
 
     [ContextMenu("RandomizeStrength")]
 
@@ -33,11 +34,27 @@ public class EnemyCharacter : ScriptableObject
 
         slaveName = ReturnName();
         avgScore = Mathf.RoundToInt((strength+defence+intelligence+agility+endurance+accuracy+resilience+leadership+luck)/10);
+
+        if (characterSprite == null)
+        {
+            characterSprite = GetDefaultCharacterSprite();
+        }
     }
     public int avgScore;
+    private Sprite GetDefaultCharacterSprite()
+    {
+        // Replace "DefaultCharacterSprite" with the name of your default sprite in the project
+        Sprite defaultSprite = Resources.Load<Sprite>("DefaultCharacterSprite");
 
-   
-    
+        if (defaultSprite == null)
+        {
+            Debug.LogWarning("DefaultCharacterSprite not found in Resources folder.");
+        }
+
+        return defaultSprite;
+    }
+
+
     private string ReturnName()
     {
        string name = names[Random.Range(0, names.Length)];

@@ -25,5 +25,6 @@ MonoBehaviour:
   resilience: 2
   leadership: 9
   luck: 7
-  maxStat: 30
-  minStat: 2
+  slavePrefab: {fileID: 5379265072823920956, guid: 60c2b04c93c9256499f71527f5e6c11a, type: 3}
+  avgScore: 4
+  sprite: {fileID: 21300000, guid: 9a06e7f64c40cc04ebda0ea05e969af0, type: 3}

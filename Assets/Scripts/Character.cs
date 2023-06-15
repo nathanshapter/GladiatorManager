@@ -10,14 +10,15 @@ public class Character : ScriptableObject
     public string slaveinfo;
     public int slavePrice;
     public int strength, defence, intelligence, charisma, agility, endurance, accuracy, resilience, leadership, luck;
-    public int maxStat;
-    public int minStat;
+   
 
 
     public GameObject slavePrefab;
 
     public int avgScore;
 
+
+    public Sprite sprite;
     private void OnEnable()
     {
 

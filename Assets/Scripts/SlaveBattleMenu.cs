@@ -11,6 +11,7 @@ public class SlaveBattleMenu : MonoBehaviour
     [SerializeField] TextMeshProUGUI battle1, battle2, battle3;
     [SerializeField] TextMeshProUGUI[] opponentName1, opponentName2, opponentName3;
     [SerializeField] TextMeshProUGUI[] opponentAvgStat1, opponentAvgStat2, opponentAvgStat3;
+    public int avgScore1, avgScore2, avgScore3;
   //  [SerializeField] EnemyCharacter[] allOpponents;
     public List<EnemyCharacter> opponents1, opponents2, opponents3;
     [SerializeField] GameObject opponentNamePrefab;
@@ -21,9 +22,12 @@ public class SlaveBattleMenu : MonoBehaviour
    public int slaveAmountToPass1, slaveAmountToPass2, slaveAmountToPass3;
 
     BattleSceneSlaves battleSceneSlaves;
+
+    SelectYourSlaves selectYourSlaves;
     private void Start()
     {
        battleSceneSlaves = FindObjectOfType<BattleSceneSlaves>();
+        selectYourSlaves = FindObjectOfType<SelectYourSlaves>();
        
         RollOpponents();
       
@@ -35,15 +39,17 @@ public class SlaveBattleMenu : MonoBehaviour
 
     public void RollOpponents() // tmp, tmp, list<enemycharacter>
     {
-        GenerateOpponents(opponentName1, battle1, opponents1, true, 1, opponentAvgStat1);
-        GenerateOpponents(opponentName2, battle2,opponents2, false,2, opponentAvgStat2);
-        GenerateOpponents(opponentName3, battle3, opponents3,false,3, opponentAvgStat3);
+        GenerateOpponents(opponentName1, battle1, opponents1, true, 1, opponentAvgStat1, avgScore1);
+        GenerateOpponents(opponentName2, battle2,opponents2, false,2, opponentAvgStat2, avgScore2);
+        GenerateOpponents(opponentName3, battle3, opponents3,false,3, opponentAvgStat3, avgScore3);
       
         
     }
 
-    void GenerateOpponents(TMP_Text[] opponentNames, TMP_Text battleText, List<EnemyCharacter> enemyCharacterList, bool clearList, int slaveInt,TMP_Text[] avgStat)
+    void GenerateOpponents(TMP_Text[] opponentNames, TMP_Text battleText, List<EnemyCharacter> enemyCharacterList, bool clearList, int slaveInt,TMP_Text[] avgStatText, int avgScore)
     {
+
+        avgScore= 0;
         if (clearList) { ClearEnemyList(); }   
 
         int amountOfEnemiesLimit = selectSlaveMenu.slaves.Length;
@@ -69,19 +75,25 @@ public class SlaveBattleMenu : MonoBehaviour
                 
                 int numberOfEnemyCharacter = Random.Range(0, allOpponents.Count);
                 opponentNames[i].text = allOpponents[numberOfEnemyCharacter].slaveName;
-                avgStat[i].text = " Avg stat: " + allOpponents[numberOfEnemyCharacter].avgScore.ToString();
+                avgStatText[i].text = " Avg stat: " + allOpponents[numberOfEnemyCharacter].avgScore.ToString();
+                
                 enemyCharacterList.Add(allOpponents[numberOfEnemyCharacter]);
-               
-               
+
+                avgScore += allOpponents[numberOfEnemyCharacter].avgScore;
                 
                 allOpponents.RemoveAt(numberOfEnemyCharacter);
             }
             else
             {
                 opponentNames[i].text = string.Empty;
-                avgStat[i].text = string.Empty; 
+                avgStatText[i].text = string.Empty; 
             }
+
+           
         }
+        avgScore /= amountOfEnemies;
+        print($" avg score is {avgScore}");
+        
         int numberToUse = Random.Range(0, 100);
         if (numberToUse > 75)
         {
@@ -103,21 +115,23 @@ public class SlaveBattleMenu : MonoBehaviour
         {
             case 1:
                 slaveAmountToPass1 = amountOfCharacterSlaves;
-                
+                avgScore1 = avgScore;
                 break;
               
 
                 // put the code to copy enemies in
                 case 2:
                 slaveAmountToPass2= amountOfCharacterSlaves;
+                avgScore2= avgScore;
                  break;
                 case 3:
                 slaveAmountToPass3= amountOfCharacterSlaves;
+                avgScore3= avgScore;
                // 
                 break;
         }
-        
-      
+
+
     }
 
     private void ClearEnemyList()

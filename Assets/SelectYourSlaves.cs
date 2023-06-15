@@ -17,30 +17,34 @@ public class SelectYourSlaves : MonoBehaviour
     int slaveMax;
 
     [SerializeField] TextMeshProUGUI buttonText;
+    public TextMeshProUGUI enemyAvgScoreText;
+    SlaveBattleMenu slaveBattleMenu;
     private void Start()
     {
        
         selectSlaveMenu = FindObjectOfType<SelectSlaveMenu>();
         dropDown = GetComponentInChildren<TMP_Dropdown>();
       battleSceneSlaves= FindObjectOfType<BattleSceneSlaves>();
+        slaveBattleMenu = FindObjectOfType<SlaveBattleMenu>();
        
     }
   public void PopulateDropDown(int i)
     {
-
+        
 
         selectSlaveMenu.FindSlaves();
-       
-       
+
+
         List<Slave> slaveList = selectSlaveMenu.slaves.ToList();
-        print(selectSlaveMenu.slaves.Length);
-        List<TMP_Dropdown.OptionData> options = slaveList
-            .Select(slave => new TMP_Dropdown.OptionData(slave.character.slaveName))
-            .ToList();
-        
+        List<TMP_Dropdown.OptionData> options = slaveList.Select(slave =>
+            new TMP_Dropdown.OptionData($"{slave.character.slaveName} -  {slave.character.avgScore}")
+        ).ToList();
+
         dropDown.options = options;
         slaveMax = i;
         print($" Please select {slaveMax} slaves ");
+
+    //    enemyAvgScoreText.text = slaveBattleMenu.avgScoreToPass.ToString();
     }
 
 

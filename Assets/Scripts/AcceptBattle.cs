@@ -52,15 +52,18 @@ public class AcceptBattle : MonoBehaviour
             case 0:
                 print("choose your slaves " + slavebattleMenu.slaveAmountToPass1);
                 selectYourSlavesForBattle.PopulateDropDown(slavebattleMenu.slaveAmountToPass1);
+                selectYourSlavesForBattle.enemyAvgScoreText.text = $"Enemy team skill avg: {slavebattleMenu.avgScore1}";
                 break;
             case 1:
                 print("choose your slaves " + slavebattleMenu.slaveAmountToPass2);
                 selectYourSlavesForBattle.PopulateDropDown(slavebattleMenu.slaveAmountToPass2);
+                selectYourSlavesForBattle.enemyAvgScoreText.text = $"Enemy team skill avg: {slavebattleMenu.avgScore2}";
                 break;
             case 2:
 
                 print("choose your slaves " + slavebattleMenu.slaveAmountToPass3);
                 selectYourSlavesForBattle.PopulateDropDown(slavebattleMenu.slaveAmountToPass3);
+                selectYourSlavesForBattle.enemyAvgScoreText.text = $"Enemy team skill avg: {slavebattleMenu.avgScore3}";
                 break;
 
         }

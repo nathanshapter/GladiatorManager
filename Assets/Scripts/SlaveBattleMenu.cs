@@ -92,7 +92,7 @@ public class SlaveBattleMenu : MonoBehaviour
            
         }
         avgScore /= amountOfEnemies;
-        print($" avg score is {avgScore}");
+       
         
         int numberToUse = Random.Range(0, 100);
         if (numberToUse > 75)

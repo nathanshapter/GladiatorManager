@@ -15,10 +15,12 @@ public class SelectYourSlaves : MonoBehaviour
 
     List<Character> slavesTobattleWith = new List<Character>();
     int slaveMax;
+    [SerializeField] TextMeshProUGUI slavesRemaining;
 
     [SerializeField] TextMeshProUGUI buttonText;
-    public TextMeshProUGUI enemyAvgScoreText;
+    public TextMeshProUGUI enemyAvgSkillText;
     SlaveBattleMenu slaveBattleMenu;
+    int amountOfSlavesSelected;
     private void Start()
     {
        
@@ -37,12 +39,23 @@ public class SelectYourSlaves : MonoBehaviour
 
         List<Slave> slaveList = selectSlaveMenu.slaves.ToList();
         List<TMP_Dropdown.OptionData> options = slaveList.Select(slave =>
-            new TMP_Dropdown.OptionData($"{slave.character.slaveName} -  {slave.character.avgScore}")
+            new TMP_Dropdown.OptionData($"{slave.character.slaveName} - Avg Skill: {slave.character.avgScore}")
         ).ToList();
 
         dropDown.options = options;
         slaveMax = i;
-        print($" Please select {slaveMax} slaves ");
+
+        if(slaveMax == 1)
+        {
+            slavesRemaining.text = $" Please select {slaveMax} slave ";
+        }
+        else
+        {
+            slavesRemaining.text = $" Please select {slaveMax} slaves ";
+        }
+
+       
+       
 
     //    enemyAvgScoreText.text = slaveBattleMenu.avgScoreToPass.ToString();
     }
@@ -66,16 +79,17 @@ public class SelectYourSlaves : MonoBehaviour
         // Check if the selected slave's name has already been added
         if (slavesTobattleWith.Exists(slave => slave.name == selectedSlave.character.name))
         {
-            print("This slave's name has already been added to the battle.");
+            slavesRemaining.text = $"{selectedSlave.character.slaveName} has already been added to the battle. ";
             return;
         }
 
         slavesTobattleWith.Add(selectedSlave.character);
-        print("You have selected " + selectedSlave.character.name);
-
+     
+        amountOfSlavesSelected++;
+        slavesRemaining.text = ("You have selected " + selectedSlave.character.slaveName + $" Please select {slaveMax - amountOfSlavesSelected} more.");
         if (slavesTobattleWith.Count == slaveMax)
         {
-            print("You have selected the correct amount of slaves. Prepare for battle");
+           slavesRemaining.text =  "You have selected the correct amount of slaves. Prepare for battle";
             buttonText.text = "Begin battle";
             foreach (var item in slavesTobattleWith)
             {

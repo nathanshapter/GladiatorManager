@@ -6,15 +6,17 @@ public class BattleSceneSlaves : MonoBehaviour
 {
     static BattleSceneSlaves instance;
 
-    SelectYourSlaves selectYourSlaves;
-  public  List<Character> playerBattleSlaves = new List<Character>();
- public  List<EnemyCharacter> enemyBattleSlaves = new List<EnemyCharacter>();
+    public  List<Character> playerBattleSlaves = new List<Character>();
+    public  List<EnemyCharacter> enemyBattleSlaves = new List<EnemyCharacter>();
 
-    [SerializeField] GameObject enemyNPC;
+   
+    /// <summary>
+    /// The purpose of this script is to be given the slaves that were chosen for battle in the battle menu
+    /// These slaves count are then used to spawn the correct amount of player gladiators and enemy gladiators
+    /// </summary>
 
     private void Awake()
-    {
-       
+    {       
         if(instance ==null)
         {
             instance = this;
@@ -24,12 +26,7 @@ public class BattleSceneSlaves : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-
-    private void Start()
-    {
-        selectYourSlaves = FindObjectOfType<SelectYourSlaves>();
-    }
+    } 
 
  public   void CopyPlayerSlaves(List<Character> slavesToBattleWith)
     {
@@ -40,7 +37,10 @@ public class BattleSceneSlaves : MonoBehaviour
             print(item.slaveName + " has been passed to battleSceneSlaves.");
         }
     }
-    public void CopyEnemySlaves(List<EnemyCharacter> slavesToBattleAgainst)
+
+
+    // 3 references because there are 3 possible battles. It is only called once and copies the slaves from the battle that was selected
+    public void CopyEnemySlaves(List<EnemyCharacter> slavesToBattleAgainst) 
     {
         enemyBattleSlaves.Clear();
         enemyBattleSlaves = slavesToBattleAgainst;

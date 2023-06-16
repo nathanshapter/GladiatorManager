@@ -26,7 +26,7 @@ public class SlaveSelectionButton : MonoBehaviour
             ;
 
        
-      Instantiate(character.replacementSlavePrefab);
+   //   Instantiate(character.replacementSlavePrefab);
         
     }
    

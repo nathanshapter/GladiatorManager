@@ -16,8 +16,12 @@ public class EnemyCharacter : ScriptableObject
     public GameObject slavePrefab;
     public Sprite characterSprite;
 
-    [ContextMenu("RandomizeStrength")]
 
+    public int avgStat;  
+
+
+    // randomised atm for battles, will need to take in datemanager to increase values in future
+    // also takes in a random name, also want to add in job titles that will increase likelihood of higher stats pertaining to their title
     private void OnEnable()
     {
 
@@ -33,14 +37,14 @@ public class EnemyCharacter : ScriptableObject
         luck = Random.Range(0, 10);
 
         slaveName = ReturnName();
-        avgScore = Mathf.RoundToInt((strength+defence+intelligence+agility+endurance+accuracy+resilience+leadership+luck)/10);
+        avgStat = Mathf.RoundToInt((strength+defence+intelligence+agility+endurance+accuracy+resilience+leadership+luck)/10);
 
         if (characterSprite == null)
         {
             characterSprite = GetDefaultCharacterSprite();
         }
     }
-    public int avgScore;
+  
     private Sprite GetDefaultCharacterSprite()
     {
         // Replace "DefaultCharacterSprite" with the name of your default sprite in the project
@@ -53,7 +57,6 @@ public class EnemyCharacter : ScriptableObject
 
         return defaultSprite;
     }
-
 
     private string ReturnName()
     {

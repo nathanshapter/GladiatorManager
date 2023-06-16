@@ -6,27 +6,30 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
- [SerializeField]   BattleSceneSlaves battleSceneSlaves;
 
-  public List<EnemyCharacter> enemyBattleSlaves = new List<EnemyCharacter>();
+    /// <summary>
+    /// This script spawns enemies based on the battlesceneSlaves script.
+    /// it used the referenced script to spawn enemies in a certain distance from each other
+    /// sister script is FriendlySpawner
+    /// </summary>
+
+
+    [SerializeField]   BattleSceneSlaves battleSceneSlaves;
+
+    // this is an exact copy of battle scene slaves
+    public List<EnemyCharacter> enemyBattleSlaves = new List<EnemyCharacter>(); 
     [SerializeField] List<Character> friendlyBattleSlaves = new List<Character>();
-    [SerializeField] GameObject enemyPrefab;
 
-
-    // spawners need to hold array of all gladiatorNPC
-
+    // this is used to take in the enemy gladiators that are spawned, and to remove them once they die
     public List<EnemyGladiatorNPC> enemyGladiatorNPCs = new List<EnemyGladiatorNPC>();
 
-    // Start is called before the first frame update
-
-
+    // spawnedge to clamp in where they will spawn, onevsone spawn used for when there is only one enemy on either side
     [SerializeField] Transform spawnEdge1, spawnEdge2, oneVSoneSpawn;
     [SerializeField] float spawnRange;
-    void Start()
-    {
-      //  friendlySpawner = FindObjectOfType<FriendlySpawner>();
-        StartCoroutine(GetSlaveScript());
-    
+    [SerializeField] GameObject enemyPrefab;
+     void Start()
+    {     
+        StartCoroutine(GetSlaveScript());    
        
     }
 
@@ -86,6 +89,9 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
+
+    // this method waits two seconds after spawning the NPC's to allow the others to spawn, they currently only go for one enemy , shall eventually have randomised targets, and will
+    // attack the enemy that is closest to them, and then the one that hits them
     IEnumerator SetTarget(GameObject newEnemy)
     {
         yield return new WaitForSeconds(2);

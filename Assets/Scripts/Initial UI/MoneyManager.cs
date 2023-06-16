@@ -10,16 +10,14 @@ public class MoneyManager : MonoBehaviour
     public int money;
     public int startingMoney;
 
-    public int upgradePrice = 20; // implement method to calculate price
+    //method needs to be created to calculate the upgrade price of each skill, and the price of the slaves
+    public int upgradePrice = 20; 
     private void Start()
     {
-        // if new game{}
+       
         money = startingMoney;
         moneyText.text = $"Wallet contains {money} gold";
     }
-
-
-
 
     public void UpdateText()
     {

@@ -78,10 +78,10 @@ public class SlaveBattleMenu : MonoBehaviour
             {
                 int numberOfEnemyCharacter = Random.Range(0, allOpponents.Count);
                 opponentNames[i].text = allOpponents[numberOfEnemyCharacter].slaveName;
-                avgStatText[i].text = " Avg stat: " + allOpponents[numberOfEnemyCharacter].avgScore.ToString();
+                avgStatText[i].text = " Avg stat: " + allOpponents[numberOfEnemyCharacter].avgStat.ToString();
                 enemyCharacterList.Add(allOpponents[numberOfEnemyCharacter]);
                 sprite[i].sprite = allOpponents[numberOfEnemyCharacter].characterSprite;
-                avgScore += allOpponents[numberOfEnemyCharacter].avgScore;
+                avgScore += allOpponents[numberOfEnemyCharacter].avgStat;
                 allOpponents.RemoveAt(numberOfEnemyCharacter);
             }
             else

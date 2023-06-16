@@ -8,38 +8,46 @@ using UnityEngine.SceneManagement;
 
 public class SelectYourSlaves : MonoBehaviour
 {
-  [SerializeField]  TMP_Dropdown dropDown;
-    SelectSlaveMenu selectSlaveMenu;
-    int activeOption;
+    /// <summary>
+    /// The purpose of this script is to select the slaves the will be added to the battlescene slaves and to populate thedropdown to show them, and to select them
+    /// </summary>
+
     BattleSceneSlaves battleSceneSlaves;
 
-    List<Character> slavesTobattleWith = new List<Character>();
-    int slaveMax;
-    [SerializeField] TextMeshProUGUI slavesRemaining;
 
+    [SerializeField]  TMP_Dropdown dropDown;
+    SelectSlaveMenu selectSlaveMenu;
+    int activeOption;
+  
+
+    List<Character> slavesTobattleWith = new List<Character>();
+
+
+    int slaveMax;
+    int amountOfSlavesSelected;
+    [SerializeField] TextMeshProUGUI slavesRemaining;
     [SerializeField] TextMeshProUGUI buttonText;
     public TextMeshProUGUI enemyAvgSkillText;
-    SlaveBattleMenu slaveBattleMenu;
-    int amountOfSlavesSelected;
+  
+    
     private void Start()
     {
        
         selectSlaveMenu = FindObjectOfType<SelectSlaveMenu>();
         dropDown = GetComponentInChildren<TMP_Dropdown>();
       battleSceneSlaves= FindObjectOfType<BattleSceneSlaves>();
-        slaveBattleMenu = FindObjectOfType<SlaveBattleMenu>();
+      
        
     }
   public void PopulateDropDown(int i)
     {
         
-
         selectSlaveMenu.FindSlaves();
 
 
         List<Slave> slaveList = selectSlaveMenu.slaves.ToList();
         List<TMP_Dropdown.OptionData> options = slaveList.Select(slave =>
-            new TMP_Dropdown.OptionData($"{slave.character.slaveName} - Avg Skill: {slave.character.avgScore}")
+            new TMP_Dropdown.OptionData($"{slave.character.slaveName} - Avg Skill: {slave.character.avgStat}")
         ).ToList();
 
         dropDown.options = options;
@@ -53,14 +61,12 @@ public class SelectYourSlaves : MonoBehaviour
         {
             slavesRemaining.text = $" Please select {slaveMax} slaves ";
         }
+      
 
-       
-       
-
-    //    enemyAvgScoreText.text = slaveBattleMenu.avgScoreToPass.ToString();
+  
     }
 
-
+    // called on the Accept button
     public void AddToBattleList()
     {
 

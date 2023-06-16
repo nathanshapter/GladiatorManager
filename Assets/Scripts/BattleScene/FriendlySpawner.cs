@@ -5,22 +5,32 @@ using UnityEngine;
 
 public class FriendlySpawner : MonoBehaviour
 {
+
+    /// <summary>
+    /// This script spawns gladiators based on the battlesceneSlaves script.
+    /// it used the referenced script to spawn enemies in a certain distance from each other
+    /// sister script is EnemySpawner
+    /// </summary>
+
     BattleSceneSlaves battleSceneSlaves;
+
+    // this is an exact copy of battle scene slaves
     public List<Character> friendlyBattleSlaves = new List<Character>();
     [SerializeField] List<EnemyCharacter> enemyBattleSlaves = new List<EnemyCharacter>();
+
+
     [SerializeField] GameObject friendlyPrefab;
 
+    // this is used to take in the friendly gladiators that are spawned, and to remove them once they die
+    public List<PlayerGladiatorNPC> playerGladiatorNPCs = new List<PlayerGladiatorNPC>();
 
-   public List<PlayerGladiatorNPC> playerGladiatorNPCs = new List<PlayerGladiatorNPC>();
-
+    // spawnedge to clamp in where they will spawn, onevsone spawn used for when there is only one enemy on either side
     [SerializeField] Transform spawnEdge1, spawnEdge2, oneVSOneSpawn;
     [SerializeField] float spawnRange;
 
     void Start()
-    {
-      //  enemySpawner = FindObjectOfType<EnemySpawner>();
+    {     
         StartCoroutine(GetSlaveScript());
-
 
     }
 
@@ -69,7 +79,6 @@ public class FriendlySpawner : MonoBehaviour
             StartCoroutine(SetTarget(newFriendly));
             playerGladiatorNPCs.Add(newFriendly.GetComponent<PlayerGladiatorNPC>());
         }
-
 
 
 

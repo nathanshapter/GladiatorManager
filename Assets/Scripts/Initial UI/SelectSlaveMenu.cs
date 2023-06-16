@@ -17,15 +17,19 @@ public class SelectSlaveMenu : MonoBehaviour
     [SerializeField] GameObject[] auctionMenu;
     [SerializeField] GameObject battleMenuButton;
     [SerializeField] GameObject slaveAuctionButton;
-   [SerializeField] SelectYourSlaves selectYourSlavesForBattle;
-    [SerializeField] GameObject battleMenuUI; 
-
+    [SerializeField] SelectYourSlaves selectYourSlavesForBattle;
+    [SerializeField] GameObject battleMenuUI;
+    [SerializeField] SlaveBattleMenu slaveBattleMenu;
     int activeMenu = 0;
     string slaveText = "";
     int firstNumber =0 , secondNumber =1, thirdNumber =2;
     public Slave[] slaves;
 
- [SerializeField]   SlaveBattleMenu slaveBattleMenu;
+
+    /// <summary>
+    /// the purpose of this script is to turn on and off all UI that is a part of the main menu battle menu, and slave auction
+    /// </summary>
+ 
     private void Start()
     {
         DisableEverything(false);
@@ -34,17 +38,13 @@ public class SelectSlaveMenu : MonoBehaviour
      
         
     }
-  public  void EnableBattleMenu()
+    public void FindSlaves()
     {
-        DisableEverything(false);
-        slaveAuctionButton.SetActive(true);
-        FindSlaves();
-       battleMenuUI.SetActive(true);
-        slaveBattleMenu.RollOpponents();
-        
-    }
+        slaves = FindObjectsOfType<Slave>();
 
- public   void DisableEverything(bool extras)
+    }
+    // extras is provided as a bool as sometimes i dont want to disable everything everything
+    public   void DisableEverything(bool extras)
     {
         foreach (var item in slaveSelection)
         {
@@ -68,63 +68,14 @@ public class SelectSlaveMenu : MonoBehaviour
             slaveBattleMenu.gameObject.SetActive(false);
             battleMenuButton.SetActive(false);
         }
-          
-       
-    }
-    public void PreviousSlave()
-    {
-        DisableEverything(false);
-        if(activeMenu ==0)
-        {
-            activeMenu = slaveSelection.Length -1;
-
-        }
-        else
-        {
-            activeMenu--;
-        }
-        EnableSlave(activeMenu);
-    }
-    public void NextSlave()
-    {
-        DisableAllSlaveSelection();
-        if (activeMenu == slaveSelection.Length - 1)
-        {
-            activeMenu = 0;
-
-        }
-        else
-        {
-            activeMenu++;
-        }
-        EnableSlave(activeMenu);
+                 
     }
 
-    private void DisableAllSlaveSelection()
-    {
-        foreach (var item in slaveSelection)
-        {
-            item.gameObject.SetActive(false);
-        }
-        slaveText= null;
-    }
-  
-    private void EnableSlave(int i)
-    {
-       
-        slaveSelection[i].gameObject.SetActive(true);
-        foreach (var item in slaveSelectionMenuUI)
-        {
-            item.gameObject.SetActive(true);
-        }
-    }
 
-  public  void FindSlaves()
-    {
-        slaves = FindObjectsOfType<Slave>();
-       
-    }
-    public void MySlavesMenu(bool yes) // the bool is set to false when you just want to update the text, else a full reload is marked for true
+
+    // the bool is set to false when you just want to update the text, else a full reload is marked for true
+    //this method populates the information about the slaves, their price, the button when purchased, and their stats
+    public void MySlavesMenu(bool yes) 
     {
         int number = 0;
         int numberInfo = 0;
@@ -200,6 +151,60 @@ public class SelectSlaveMenu : MonoBehaviour
         }
        
     }
+
+
+    // these four methods are for navigating the slave auction menu
+    public void PreviousSlave()
+    {
+        DisableEverything(false);
+        if (activeMenu == 0)
+        {
+            activeMenu = slaveSelection.Length - 1;
+
+        }
+        else
+        {
+            activeMenu--;
+        }
+        EnableSlave(activeMenu);
+    }
+    public void NextSlave()
+    {
+        DisableAllSlaveSelection();
+        if (activeMenu == slaveSelection.Length - 1)
+        {
+            activeMenu = 0;
+
+        }
+        else
+        {
+            activeMenu++;
+        }
+        EnableSlave(activeMenu);
+    }
+
+    private void DisableAllSlaveSelection()
+    {
+        foreach (var item in slaveSelection)
+        {
+            item.gameObject.SetActive(false);
+        }
+        slaveText = null;
+    }
+
+    private void EnableSlave(int i)
+    {
+
+        slaveSelection[i].gameObject.SetActive(true);
+        foreach (var item in slaveSelectionMenuUI)
+        {
+            item.gameObject.SetActive(true);
+        }
+    }
+
+
+    // these four methods are for navigating the myslaves menu
+
     void SlaveTextOn(int one, int two, int three)
     {
         foreach (var item in mySlaveText)

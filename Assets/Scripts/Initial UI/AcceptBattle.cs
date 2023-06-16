@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class AcceptBattle : MonoBehaviour
 {
-   SlaveBattleMenu slavebattleMenu;
+    SlaveBattleMenu slavebattleMenu;
     SelectSlaveMenu SelectSlaveMenu;
-
-    [SerializeField] SelectYourSlaves selectYourSlavesForBattle;
+    SelectYourSlaves selectYourSlavesForBattle;
     BattleSceneSlaves battleSceneSlaves;
+
+    /// <summary>
+    /// The purpose of this script is to pass in the information from the battle that you chose to the battlesceneslaves so that
+    /// the correct amount of slaves can be spawned with their correct stats
+    /// </summary>
 
     private void Start()
     {
@@ -18,7 +22,10 @@ public class AcceptBattle : MonoBehaviour
         battleSceneSlaves= FindObjectOfType<BattleSceneSlaves>();
     }
 
-    public void AcceptSlaveBattle(int i) // the i is to be chosen in button inspector to say the battle you want to accept
+    // the i is to be chosen in button inspector to say the battle you want to accept
+    // the buttons that use then then pass it into openslaveslectforfight which then gives the avg stats of the enemy team, and populates the dropdown
+    //with your slaves
+    public void AcceptSlaveBattle(int i)
     {
         switch(i)
         {
@@ -43,8 +50,7 @@ public class AcceptBattle : MonoBehaviour
     }
     void OpenSlaveSelectForFight(int i)
     {
-        SelectSlaveMenu.DisableEverything(true);
-        
+        SelectSlaveMenu.DisableEverything(true);       
 
 
         switch (i)
@@ -65,12 +71,7 @@ public class AcceptBattle : MonoBehaviour
                 selectYourSlavesForBattle.PopulateDropDown(slavebattleMenu.slaveAmountToPass3);
                 selectYourSlavesForBattle.enemyAvgSkillText.text = $"Enemy team skill avg: {slavebattleMenu.avgScore3}";
                 break;
-
-        }
-
-
-
-       
+        }      
    
 
       

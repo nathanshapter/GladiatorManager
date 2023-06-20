@@ -237,5 +237,14 @@ public class SelectSlaveMenu : MonoBehaviour
         thirdNumber -= 3;
         SlaveTextOn(firstNumber, secondNumber, thirdNumber);
     }
-  
+    public void EnableBattleMenu()
+    {
+        DisableEverything(false);
+        slaveAuctionButton.SetActive(true);
+        FindSlaves();
+        battleMenuUI.SetActive(true);
+        slaveBattleMenu.RollOpponents();
+
+    }
+
 }
